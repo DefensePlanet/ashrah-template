@@ -1,0 +1,161 @@
+{
+  "language_detection": {
+    "capsules/winthemorning": {
+      "language": "swift",
+      "technologies": [
+        "swift"
+      ],
+      "frameworks": [
+        "swiftui",
+        "uikit"
+      ],
+      "mcp_servers": [
+        "n8n-mcp",
+        "apple-doc-mcp",
+        "xcodebuild-mcp"
+      ],
+      "confidence": 1.0
+    },
+    "capsules/brandjack": {
+      "language": "web",
+      "technologies": [
+        "web"
+      ],
+      "frameworks": [],
+      "mcp_servers": [
+        "n8n-mcp",
+        "web-doc-mcp",
+        "shadcn-ui",
+        "apple-doc-mcp"
+      ],
+      "confidence": 1.0
+    },
+    "testing/capsules/test-mcp-web": {
+      "language": "unknown",
+      "technologies": [],
+      "frameworks": [],
+      "mcp_servers": [],
+      "confidence": 0.0
+    }
+  },
+  "mcp_configuration": {
+    "capsules/winthemorning": {
+      "detected_language": "swift",
+      "expected_language": "swift",
+      "recommended_servers": [
+        "filesystem",
+        "git-mcp",
+        "xcodebuild-mcp",
+        "apple-doc-mcp"
+      ],
+      "matches_expected": true
+    },
+    "capsules/brandjack": {
+      "detected_language": "web",
+      "expected_language": "automation",
+      "recommended_servers": [
+        "filesystem",
+        "git-mcp",
+        "shadcn-ui"
+      ],
+      "matches_expected": false
+    }
+  },
+  "debugging_patterns": {
+    "swift_Cannot find 'Content": {
+      "expected_pattern": "SwiftUI State Management",
+      "found_pattern": "SwiftUI State Management",
+      "confidence": 0.75,
+      "match_correct": true
+    },
+    "swift_Linker command faile": {
+      "expected_pattern": "Xcode Build Errors",
+      "found_pattern": "Xcode Build Errors",
+      "confidence": 0.45,
+      "match_correct": true
+    },
+    "javascript_useEffect has a miss": {
+      "expected_pattern": "React Hook Dependencies",
+      "found_pattern": "React Hook Dependencies",
+      "confidence": 0.75,
+      "match_correct": true
+    },
+    "python_ModuleNotFoundError:": {
+      "expected_pattern": "Import and Module Issues",
+      "found_pattern": "Import and Module Issues",
+      "confidence": 0.7,
+      "match_correct": true
+    },
+    "automation_Workflow failed exec": {
+      "expected_pattern": "n8n Workflow Issues",
+      "found_pattern": "n8n Workflow Issues",
+      "confidence": 0.45,
+      "match_correct": true
+    }
+  },
+  "mcp_query_generation": {
+    "swift_SwiftUI layout const": {
+      "expected_mcps": [
+        "apple-doc-mcp"
+      ],
+      "generated_queries": [
+        "apple-doc-mcp: search_symbols '*SwiftUI layout const*'"
+      ],
+      "has_expected": true,
+      "query_count": 1
+    },
+    "javascript_React component not ": {
+      "expected_mcps": [
+        "shadcn-ui"
+      ],
+      "generated_queries": [
+        "shadcn-ui: debug 'React component not rendering'"
+      ],
+      "has_expected": true,
+      "query_count": 1
+    },
+    "automation_n8n workflow executi": {
+      "expected_mcps": [
+        "n8n-mcp"
+      ],
+      "generated_queries": [],
+      "has_expected": false,
+      "query_count": 0
+    }
+  },
+  "integration_test": {
+    "status": "success",
+    "capsule_path": "capsules/winthemorning",
+    "context": {
+      "language": "swift",
+      "confidence": 1.0,
+      "frameworks": [
+        "swiftui",
+        "uikit"
+      ]
+    },
+    "mcp_servers": [
+      "filesystem",
+      "git-mcp",
+      "xcodebuild-mcp",
+      "apple-doc-mcp"
+    ],
+    "error_analysis": {
+      "patterns_found": 3,
+      "best_match": "SwiftUI State Management",
+      "confidence": 0.75
+    },
+    "mcp_queries": [
+      "apple-doc-mcp: search_symbols 'SwiftUI*State*'",
+      "apple-doc-mcp: get_documentation 'SwiftUI/Binding'",
+      "apple-doc-mcp: get_documentation 'SwiftUI/State'",
+      "apple-doc-mcp: search_symbols '*Cannot find 'Content*'"
+    ],
+    "integration_checks": {
+      "language_support": true,
+      "mcp_configured": true,
+      "error_patterns": true,
+      "mcp_queries": true
+    }
+  }
+}

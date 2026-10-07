@@ -1,0 +1,28 @@
+services:
+  {{ORCHESTRATOR_NAME_LOWER}}-gateway:
+    build: .
+    container_name: {{ORCHESTRATOR_NAME_LOWER}}-gateway
+    restart: unless-stopped
+    ports:
+      - "18800:18800"
+    environment:
+      # Ollama runs on host machine
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=mistral
+      # Kokoro TTS runs on host machine
+      - KOKORO_URL=http://host.docker.internal:8880/v1/audio/speech
+      - KOKORO_VOICE=am_onyx
+    # Allow container to access host network services
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost',18800)); s.close()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

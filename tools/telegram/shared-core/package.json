@@ -1,0 +1,23 @@
+{
+  "name": "@catalyst/telegram-shared-core",
+  "version": "0.1.0",
+  "description": "Shared substrate for TC2 (OpenClaw) and TC3 ({{ORCHESTRATOR_NAME}} Hybrid) — capability index, condensation pipeline, trigger classifier",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target node",
+    "generate": "bun run src/cli.ts generate",
+    "generate:index": "bun run src/cli.ts generate --index-only",
+    "generate:packs": "bun run src/cli.ts generate --packs-only",
+    "check-drift": "bun run src/cli.ts check-drift",
+    "typecheck": "bunx tsc --noEmit"
+  },
+  "dependencies": {
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,1321 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-02-17T07:23:45.365Z",
+  "agent_count": 30,
+  "departments": {
+    "engineering": [
+      {
+        "id": "backend-specialist",
+        "name": "🏛️ Backend Developer",
+        "emoji": "🏛️",
+        "shortName": "Backend Developer",
+        "description": "API design, backend systems implementation, and database work. Uses Context7 MCP for language/framework expertise.",
+        "model": "opus",
+        "capabilities": [
+          "api-design",
+          "api-contract",
+          "database-schema",
+          "authentication",
+          "cloudflare-config",
+          "deployment",
+          "domain-management",
+          "dns-config"
+        ],
+        "collaborators": [
+          "🎨 Frontend Developer",
+          "🛡️ Security Analyst",
+          "📱 Mobile Developer"
+        ],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/backend-specialist.md",
+        "sourceHash": "4f32f792c0d2"
+      },
+      {
+        "id": "frontend-specialist",
+        "name": "🎨 Frontend Developer",
+        "emoji": "🎨",
+        "shortName": "Frontend Developer",
+        "description": "Web frontend specialist for React/Next.js development, accessibility, and modern web technologies with animation excellence",
+        "model": "opus",
+        "capabilities": [
+          "react-components",
+          "accessibility-audit",
+          "animation-implementation",
+          "css-styling",
+          "state-management"
+        ],
+        "collaborators": [
+          "🏛️ Backend Developer",
+          "📐 UI Designer",
+          "📱 Mobile Developer"
+        ],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/frontend-specialist.md",
+        "sourceHash": "f4d01df8ee8d"
+      },
+      {
+        "id": "macos-specialist",
+        "name": "💻 macOS Dev",
+        "emoji": "💻",
+        "shortName": "macOS Dev",
+        "description": "Expert in macOS app development, AppKit, SwiftUI for macOS, and Mac App Store deployment",
+        "model": "opus",
+        "capabilities": [
+          "mobile-development",
+          "macos-development",
+          "design"
+        ],
+        "collaborators": [],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/macos-specialist.md",
+        "sourceHash": "411fb410bff4"
+      },
+      {
+        "id": "mcp-server-architect",
+        "name": "🏄🏼‍♂️ MCP Server Dude",
+        "emoji": "🏄🏼‍♂️",
+        "shortName": "MCP Server Dude",
+        "description": "MCP server architecture and implementation specialist. Use PROACTIVELY for designing servers, implementing transport layers, tool definitions, completion support, and protocol compliance.",
+        "model": "opus",
+        "capabilities": [
+          "design",
+          "mcp-servers"
+        ],
+        "collaborators": [],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/mcp-server-architect.md",
+        "sourceHash": "97b7fbfe7003"
+      },
+      {
+        "id": "mobile-dev",
+        "name": "📱 Mobile Developer",
+        "emoji": "📱",
+        "shortName": "Mobile Developer",
+        "description": "Expert in mobile app development (Swift for native iOS, React Native for cross-platform iOS/Android), UI frameworks, and app store deployment",
+        "model": "opus",
+        "capabilities": [
+          "ios-implementation",
+          "react-native",
+          "mobile-testing",
+          "app-store-deployment",
+          "swift-ui"
+        ],
+        "collaborators": [
+          "🏛️ Backend Developer",
+          "📐 UI Designer",
+          "🎨 Frontend Developer"
+        ],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/mobile-dev.md",
+        "sourceHash": "15b1586c3eb4"
+      },
+      {
+        "id": "shopify-specialist",
+        "name": "🛒 Shopify Exec",
+        "emoji": "🛒",
+        "shortName": "Shopify Exec",
+        "description": "Expert in Shopify theme development, store optimization, and e-commerce best practices",
+        "model": "opus",
+        "capabilities": [
+          "e-commerce"
+        ],
+        "collaborators": [],
+        "department": "engineering",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/shopify-specialist.md",
+        "sourceHash": "324b2aea6c1a"
+      }
+    ],
+    "creative": [
+      {
+        "id": "3d-developer",
+        "name": "🧊 3D Developer",
+        "emoji": "🧊",
+        "shortName": "3D Developer",
+        "description": "3D design, modeling, animation, and rendering specialist using Blender. Handles scene composition, procedural generation, asset pipelines, and headless batch rendering.",
+        "model": "opus",
+        "capabilities": [
+          "design",
+          "3d-modeling",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "creative",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/3d-developer.md",
+        "sourceHash": "428b937ca495"
+      },
+      {
+        "id": "graphic-designer",
+        "name": "🎨 Graphic Designer",
+        "emoji": "🎨",
+        "shortName": "Graphic Designer",
+        "description": "Design assets specialist — brand identity, logos, vector graphics, infographics, templates, and social media layouts. AI image generation for design-specific work (logos, text-heavy graphics, brand assets).",
+        "model": "sonnet",
+        "capabilities": [
+          "design",
+          "media-generation",
+          "brand-integrity",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "creative",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/graphic-designer.md",
+        "sourceHash": "3cb4fe2758f5"
+      },
+      {
+        "id": "studio-engineer",
+        "name": "🎬 Studio Engineer",
+        "emoji": "🎬",
+        "shortName": "Studio Engineer",
+        "description": "Professional A/V production software specialist for OBS Studio and DaVinci Resolve. Controls recording, streaming, video editing, and programmatic color grading via APIs and automation.",
+        "model": "sonnet",
+        "capabilities": [
+          "api-design",
+          "automation",
+          "media-generation",
+          "av-production"
+        ],
+        "collaborators": [],
+        "department": "creative",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/studio-engineer.md",
+        "sourceHash": "e053c339ad1e"
+      },
+      {
+        "id": "ui-designer",
+        "name": "📐 UI Designer",
+        "emoji": "📐",
+        "shortName": "UI Designer",
+        "description": "Product UI/UX specialist for user research, wireframes, prototypes, and design systems (Catalyst Design Studio workflow)",
+        "model": "sonnet",
+        "capabilities": [
+          "wireframes",
+          "design-system",
+          "user-flows",
+          "prototypes",
+          "visual-design",
+          "accessibility-guidelines"
+        ],
+        "collaborators": [
+          "🎨 Frontend Developer",
+          "📱 Mobile Developer"
+        ],
+        "department": "creative",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/ui-designer.md",
+        "sourceHash": "d91080031755"
+      },
+      {
+        "id": "visual-media-generator",
+        "name": "📸 Camera Man",
+        "emoji": "📸",
+        "shortName": "Camera Man",
+        "description": "AI-generated media specialist — photorealistic images (Gemini), video (Sora 2, Veo 3.1), product photography, image-to-video, video extension, and image upscaling (Real-ESRGAN). Primary operator for all realistic AI-generated visual content.",
+        "model": "sonnet",
+        "capabilities": [
+          "media-generation",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "creative",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/visual-media-generator.md",
+        "sourceHash": "413704a881ad"
+      }
+    ],
+    "business": [
+      {
+        "id": "brand-specialist",
+        "name": "🎯 Brand Specialist",
+        "emoji": "🎯",
+        "shortName": "Brand Specialist",
+        "description": "Cross-capsule brand integrity guardian ensuring consistent visual language, tone, and identity across all Catalyst projects",
+        "model": "haiku",
+        "capabilities": [
+          "brand-integrity"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/brand-specialist.md",
+        "sourceHash": "18f2479e8bc4"
+      },
+      {
+        "id": "business-analyst",
+        "name": "📊 Business Analyst",
+        "emoji": "📊",
+        "shortName": "Business Analyst",
+        "description": "Business metrics analysis and reporting specialist. Use PROACTIVELY for KPI tracking, revenue analysis, growth projections, cohort analysis, and investor reporting. Expert in data-driven decision making.",
+        "model": "haiku",
+        "capabilities": [
+          "business-analytics"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/business-analyst.md",
+        "sourceHash": "d86b6f3f9e6c"
+      },
+      {
+        "id": "chief-marketing-officer",
+        "name": "📣 Chief Marketing Officer",
+        "emoji": "📣",
+        "shortName": "Chief Marketing Officer",
+        "description": "Full-stack marketing leader covering paid advertising (Meta Ads, Google Ads), organic social media, content marketing, email campaigns, attribution analytics, and conversion optimization. Use PROACTIVELY for ad campaigns, social content, copywriting, ROAS analysis, audience targeting, and marketing strategy.",
+        "model": "sonnet",
+        "capabilities": [
+          "marketing",
+          "product-strategy",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/chief-marketing-officer.md",
+        "sourceHash": "ce37f3800941"
+      },
+      {
+        "id": "product-strategist",
+        "name": "🎯 Product Strategist",
+        "emoji": "🎯",
+        "shortName": "Product Strategist",
+        "description": "Product strategy and roadmap planning specialist. Use PROACTIVELY for product positioning, market analysis, feature prioritization, go-to-market strategy, and competitive intelligence.",
+        "model": "sonnet",
+        "capabilities": [
+          "product-strategy"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/product-strategist.md",
+        "sourceHash": "8813979fe753"
+      },
+      {
+        "id": "seo-analyzer",
+        "name": "🔍 SEO Analyzer",
+        "emoji": "🔍",
+        "shortName": "SEO Analyzer",
+        "description": "SEO analysis and optimization specialist. Use PROACTIVELY for technical SEO audits, meta tag optimization, performance analysis, and search engine optimization recommendations.",
+        "model": "haiku",
+        "capabilities": [
+          "marketing"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/seo-analyzer.md",
+        "sourceHash": "f172c6207fe4"
+      },
+      {
+        "id": "venture-analyst",
+        "name": "🧭 Venture Analyst",
+        "emoji": "🧭",
+        "shortName": "Venture Analyst",
+        "description": "Pre-build idea validation and market research specialist. Use PROACTIVELY for business ideation, opportunity assessment, Lean Startup validation, customer discovery, and Go/No-Go decisions before committing to build.",
+        "model": "sonnet",
+        "capabilities": [
+          "design",
+          "research",
+          "business-analytics"
+        ],
+        "collaborators": [],
+        "department": "business",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/venture-analyst.md",
+        "sourceHash": "6d7bc29350f6"
+      }
+    ],
+    "quality": [
+      {
+        "id": "code-reviewer",
+        "name": "🧐 Code Reviewer",
+        "emoji": "🧐",
+        "shortName": "Code Reviewer",
+        "description": "Specialized code review agent focused on code quality, maintainability, and best practices within Catalyst system workflows with enterprise-grade analysis",
+        "model": "opus",
+        "capabilities": [
+          "code-quality-review",
+          "security-review",
+          "performance-review",
+          "complexity-analysis"
+        ],
+        "collaborators": [
+          "👾 Debugger",
+          "🧪 Validator"
+        ],
+        "department": "quality",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/code-reviewer.md",
+        "sourceHash": "709206837eb9"
+      },
+      {
+        "id": "debugger",
+        "name": "👾 Debugger",
+        "emoji": "👾",
+        "shortName": "Debugger",
+        "description": "Catalyst-aware debugging specialist for systematic issue investigation, root cause analysis, and integration with observability stack",
+        "model": "opus",
+        "capabilities": [
+          "root-cause-analysis",
+          "bug-investigation",
+          "pattern-learning",
+          "performance-debugging"
+        ],
+        "collaborators": [
+          "🧐 Code Reviewer",
+          "🧪 Validator",
+          "🏛️ Backend Developer",
+          "🤓 AI Nerd"
+        ],
+        "department": "quality",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/debugger.md",
+        "sourceHash": "fede3e90f3ef"
+      },
+      {
+        "id": "security-analyst",
+        "name": "🛡️ Security Analyst",
+        "emoji": "🛡️",
+        "shortName": "Security Analyst",
+        "description": "Comprehensive security assessment, threat modeling, vulnerability remediation, and OWASP compliance for all projects. Handles authentication systems, risk assessment, and compliance frameworks.",
+        "model": "opus",
+        "capabilities": [
+          "security-assessment",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "quality",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/security-analyst.md",
+        "sourceHash": "71d06405c49e"
+      },
+      {
+        "id": "validator",
+        "name": "🧪 Validator",
+        "emoji": "🧪",
+        "shortName": "Validator",
+        "description": "Comprehensive testing specialist for all Catalyst products - web, mobile, macOS, n8n workflows, APIs - with full automation capabilities",
+        "model": "opus",
+        "capabilities": [
+          "functional-testing",
+          "performance-testing",
+          "e2e-testing",
+          "visual-regression"
+        ],
+        "collaborators": [
+          "🧐 Code Reviewer",
+          "👾 Debugger",
+          "🏛️ Backend Developer",
+          "📱 Mobile Developer"
+        ],
+        "department": "quality",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/validator.md",
+        "sourceHash": "cf366be9600a"
+      }
+    ],
+    "research": [
+      {
+        "id": "ai-config-specialist",
+        "name": "🤓 AI Nerd",
+        "emoji": "🤓",
+        "shortName": "AI Nerd",
+        "description": "AI model intelligence, implementation, and infrastructure specialist. Discovers and evaluates models via Hugging Face Hub, advises on model selection, implements AI features, and owns the Infinity Mode gateway stack (dormant).",
+        "model": "sonnet",
+        "capabilities": [
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "research",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/ai-config-specialist.md",
+        "sourceHash": "92487ebb6093"
+      },
+      {
+        "id": "algo-wizard",
+        "name": "🧮 Algo Wizard",
+        "emoji": "🧮",
+        "shortName": "Algo Wizard",
+        "description": "Algorithm design, competitive programming, data structures, mathematical foundations, and complexity optimization. Solves problems with rigorous algorithmic thinking.",
+        "model": "opus",
+        "capabilities": [
+          "algorithm-design",
+          "complexity-analysis",
+          "data-structure-selection",
+          "optimization",
+          "mathematical-modeling"
+        ],
+        "collaborators": [
+          "🏛️ Backend Developer",
+          "📱 Mobile Developer",
+          "🏗️ System Architect"
+        ],
+        "department": "research",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/algo-wizard.md",
+        "sourceHash": "0ac0089c51e4"
+      },
+      {
+        "id": "research-agent",
+        "name": "🔍 Research Agent",
+        "emoji": "🔍",
+        "shortName": "Research Agent",
+        "description": "Comprehensive multi-source research with academic-level methodology, transparent citations, and Catalyst integration for deep investigations",
+        "model": "sonnet",
+        "capabilities": [
+          "research"
+        ],
+        "collaborators": [],
+        "department": "research",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/research-agent.md",
+        "sourceHash": "8ace521949ac"
+      },
+      {
+        "id": "second-brain-wizard",
+        "name": "🧠 2nd Brain Wizard",
+        "emoji": "🧠",
+        "shortName": "2nd Brain Wizard",
+        "description": "Personal knowledge management specialist for Drafts, Apple Notes, GoodNotes, Obsidian, and Apple Photos. Handles quick capture, handwritten notes, typed notes, vault organization, content curation, link discovery, MOC generation, knowledge graph optimization, and photo library management (osxphotos, PhotoScript, exif2findertags). Use PROACTIVELY for PKM workflows, vault maintenance, content quality assurance, and photo organization.",
+        "model": "sonnet",
+        "capabilities": [
+          "design",
+          "media-generation",
+          "knowledge-management",
+          "av-production",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "research",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/second-brain-wizard.md",
+        "sourceHash": "afc5e07c990a"
+      }
+    ],
+    "operations": [
+      {
+        "id": "automation-specialist",
+        "name": "🤖 Automator",
+        "emoji": "🤖",
+        "shortName": "Automator",
+        "description": "Expert in workflow automation, n8n, macOS scripting, and process optimization",
+        "model": "opus",
+        "capabilities": [
+          "macos-development",
+          "automation"
+        ],
+        "collaborators": [],
+        "department": "operations",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/automation-specialist.md",
+        "sourceHash": "5937e8105099"
+      },
+      {
+        "id": "blockchain-web3-specialist",
+        "name": "⛓️ Blockchain Agent",
+        "emoji": "⛓️",
+        "shortName": "Blockchain Agent",
+        "description": "Comprehensive blockchain and Web3 development specialist. Handles smart contract development, security auditing, and frontend dApp integration. Use PROACTIVELY for Solidity development, contract audits, wallet integrations, and Web3 user experiences.",
+        "model": "opus",
+        "capabilities": [
+          "web-frontend",
+          "security-assessment",
+          "blockchain",
+          "ai-models"
+        ],
+        "collaborators": [],
+        "department": "operations",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/blockchain-web3-specialist.md",
+        "sourceHash": "56a107efe6ee"
+      },
+      {
+        "id": "bowser",
+        "name": "🐲 Bowser",
+        "emoji": "🐲",
+        "shortName": "Bowser",
+        "description": "Expert in complex web automation, anti-detection, and account creation using direct Playwright library with stealth capabilities",
+        "model": "opus",
+        "capabilities": [
+          "web-frontend",
+          "automation",
+          "web-automation"
+        ],
+        "collaborators": [],
+        "department": "operations",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/bowser.md",
+        "sourceHash": "b2d789eecbca"
+      }
+    ],
+    "command": [
+      {
+        "id": "boss",
+        "name": "👔 BOSS",
+        "emoji": "👔",
+        "shortName": "BOSS",
+        "description": "Catalyst CEO with system oversight, strategic decision-making authority, and Claude Code agent configuration expertise",
+        "model": "opus",
+        "capabilities": [
+          "general"
+        ],
+        "collaborators": [],
+        "department": "command",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/boss.md",
+        "sourceHash": "1cc1f2bc4ee1"
+      },
+      {
+        "id": "system-architect",
+        "name": "🏗️ System Architect",
+        "emoji": "🏗️",
+        "shortName": "System Architect",
+        "description": "System design for personal Mac projects and local development. Focus on simple, practical architecture for individual applications and personal tools.",
+        "model": "opus",
+        "capabilities": [
+          "design"
+        ],
+        "collaborators": [],
+        "department": "command",
+        "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/system-architect.md",
+        "sourceHash": "9a139b8bb0ce"
+      }
+    ]
+  },
+  "agents": [
+    {
+      "id": "3d-developer",
+      "name": "🧊 3D Developer",
+      "emoji": "🧊",
+      "shortName": "3D Developer",
+      "description": "3D design, modeling, animation, and rendering specialist using Blender. Handles scene composition, procedural generation, asset pipelines, and headless batch rendering.",
+      "model": "opus",
+      "capabilities": [
+        "design",
+        "3d-modeling",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "creative",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/3d-developer.md",
+      "sourceHash": "428b937ca495"
+    },
+    {
+      "id": "ai-config-specialist",
+      "name": "🤓 AI Nerd",
+      "emoji": "🤓",
+      "shortName": "AI Nerd",
+      "description": "AI model intelligence, implementation, and infrastructure specialist. Discovers and evaluates models via Hugging Face Hub, advises on model selection, implements AI features, and owns the Infinity Mode gateway stack (dormant).",
+      "model": "sonnet",
+      "capabilities": [
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "research",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/ai-config-specialist.md",
+      "sourceHash": "92487ebb6093"
+    },
+    {
+      "id": "algo-wizard",
+      "name": "🧮 Algo Wizard",
+      "emoji": "🧮",
+      "shortName": "Algo Wizard",
+      "description": "Algorithm design, competitive programming, data structures, mathematical foundations, and complexity optimization. Solves problems with rigorous algorithmic thinking.",
+      "model": "opus",
+      "capabilities": [
+        "algorithm-design",
+        "complexity-analysis",
+        "data-structure-selection",
+        "optimization",
+        "mathematical-modeling"
+      ],
+      "collaborators": [
+        "🏛️ Backend Developer",
+        "📱 Mobile Developer",
+        "🏗️ System Architect"
+      ],
+      "department": "research",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/algo-wizard.md",
+      "sourceHash": "0ac0089c51e4"
+    },
+    {
+      "id": "automation-specialist",
+      "name": "🤖 Automator",
+      "emoji": "🤖",
+      "shortName": "Automator",
+      "description": "Expert in workflow automation, n8n, macOS scripting, and process optimization",
+      "model": "opus",
+      "capabilities": [
+        "macos-development",
+        "automation"
+      ],
+      "collaborators": [],
+      "department": "operations",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/automation-specialist.md",
+      "sourceHash": "5937e8105099"
+    },
+    {
+      "id": "backend-specialist",
+      "name": "🏛️ Backend Developer",
+      "emoji": "🏛️",
+      "shortName": "Backend Developer",
+      "description": "API design, backend systems implementation, and database work. Uses Context7 MCP for language/framework expertise.",
+      "model": "opus",
+      "capabilities": [
+        "api-design",
+        "api-contract",
+        "database-schema",
+        "authentication",
+        "cloudflare-config",
+        "deployment",
+        "domain-management",
+        "dns-config"
+      ],
+      "collaborators": [
+        "🎨 Frontend Developer",
+        "🛡️ Security Analyst",
+        "📱 Mobile Developer"
+      ],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/backend-specialist.md",
+      "sourceHash": "4f32f792c0d2"
+    },
+    {
+      "id": "blockchain-web3-specialist",
+      "name": "⛓️ Blockchain Agent",
+      "emoji": "⛓️",
+      "shortName": "Blockchain Agent",
+      "description": "Comprehensive blockchain and Web3 development specialist. Handles smart contract development, security auditing, and frontend dApp integration. Use PROACTIVELY for Solidity development, contract audits, wallet integrations, and Web3 user experiences.",
+      "model": "opus",
+      "capabilities": [
+        "web-frontend",
+        "security-assessment",
+        "blockchain",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "operations",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/blockchain-web3-specialist.md",
+      "sourceHash": "56a107efe6ee"
+    },
+    {
+      "id": "boss",
+      "name": "👔 BOSS",
+      "emoji": "👔",
+      "shortName": "BOSS",
+      "description": "Catalyst CEO with system oversight, strategic decision-making authority, and Claude Code agent configuration expertise",
+      "model": "opus",
+      "capabilities": [
+        "general"
+      ],
+      "collaborators": [],
+      "department": "command",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/boss.md",
+      "sourceHash": "1cc1f2bc4ee1"
+    },
+    {
+      "id": "bowser",
+      "name": "🐲 Bowser",
+      "emoji": "🐲",
+      "shortName": "Bowser",
+      "description": "Expert in complex web automation, anti-detection, and account creation using direct Playwright library with stealth capabilities",
+      "model": "opus",
+      "capabilities": [
+        "web-frontend",
+        "automation",
+        "web-automation"
+      ],
+      "collaborators": [],
+      "department": "operations",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/bowser.md",
+      "sourceHash": "b2d789eecbca"
+    },
+    {
+      "id": "brand-specialist",
+      "name": "🎯 Brand Specialist",
+      "emoji": "🎯",
+      "shortName": "Brand Specialist",
+      "description": "Cross-capsule brand integrity guardian ensuring consistent visual language, tone, and identity across all Catalyst projects",
+      "model": "haiku",
+      "capabilities": [
+        "brand-integrity"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/brand-specialist.md",
+      "sourceHash": "18f2479e8bc4"
+    },
+    {
+      "id": "business-analyst",
+      "name": "📊 Business Analyst",
+      "emoji": "📊",
+      "shortName": "Business Analyst",
+      "description": "Business metrics analysis and reporting specialist. Use PROACTIVELY for KPI tracking, revenue analysis, growth projections, cohort analysis, and investor reporting. Expert in data-driven decision making.",
+      "model": "haiku",
+      "capabilities": [
+        "business-analytics"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/business-analyst.md",
+      "sourceHash": "d86b6f3f9e6c"
+    },
+    {
+      "id": "chief-marketing-officer",
+      "name": "📣 Chief Marketing Officer",
+      "emoji": "📣",
+      "shortName": "Chief Marketing Officer",
+      "description": "Full-stack marketing leader covering paid advertising (Meta Ads, Google Ads), organic social media, content marketing, email campaigns, attribution analytics, and conversion optimization. Use PROACTIVELY for ad campaigns, social content, copywriting, ROAS analysis, audience targeting, and marketing strategy.",
+      "model": "sonnet",
+      "capabilities": [
+        "marketing",
+        "product-strategy",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/chief-marketing-officer.md",
+      "sourceHash": "ce37f3800941"
+    },
+    {
+      "id": "code-reviewer",
+      "name": "🧐 Code Reviewer",
+      "emoji": "🧐",
+      "shortName": "Code Reviewer",
+      "description": "Specialized code review agent focused on code quality, maintainability, and best practices within Catalyst system workflows with enterprise-grade analysis",
+      "model": "opus",
+      "capabilities": [
+        "code-quality-review",
+        "security-review",
+        "performance-review",
+        "complexity-analysis"
+      ],
+      "collaborators": [
+        "👾 Debugger",
+        "🧪 Validator"
+      ],
+      "department": "quality",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/code-reviewer.md",
+      "sourceHash": "709206837eb9"
+    },
+    {
+      "id": "debugger",
+      "name": "👾 Debugger",
+      "emoji": "👾",
+      "shortName": "Debugger",
+      "description": "Catalyst-aware debugging specialist for systematic issue investigation, root cause analysis, and integration with observability stack",
+      "model": "opus",
+      "capabilities": [
+        "root-cause-analysis",
+        "bug-investigation",
+        "pattern-learning",
+        "performance-debugging"
+      ],
+      "collaborators": [
+        "🧐 Code Reviewer",
+        "🧪 Validator",
+        "🏛️ Backend Developer",
+        "🤓 AI Nerd"
+      ],
+      "department": "quality",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/debugger.md",
+      "sourceHash": "fede3e90f3ef"
+    },
+    {
+      "id": "frontend-specialist",
+      "name": "🎨 Frontend Developer",
+      "emoji": "🎨",
+      "shortName": "Frontend Developer",
+      "description": "Web frontend specialist for React/Next.js development, accessibility, and modern web technologies with animation excellence",
+      "model": "opus",
+      "capabilities": [
+        "react-components",
+        "accessibility-audit",
+        "animation-implementation",
+        "css-styling",
+        "state-management"
+      ],
+      "collaborators": [
+        "🏛️ Backend Developer",
+        "📐 UI Designer",
+        "📱 Mobile Developer"
+      ],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/frontend-specialist.md",
+      "sourceHash": "f4d01df8ee8d"
+    },
+    {
+      "id": "graphic-designer",
+      "name": "🎨 Graphic Designer",
+      "emoji": "🎨",
+      "shortName": "Graphic Designer",
+      "description": "Design assets specialist — brand identity, logos, vector graphics, infographics, templates, and social media layouts. AI image generation for design-specific work (logos, text-heavy graphics, brand assets).",
+      "model": "sonnet",
+      "capabilities": [
+        "design",
+        "media-generation",
+        "brand-integrity",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "creative",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/graphic-designer.md",
+      "sourceHash": "3cb4fe2758f5"
+    },
+    {
+      "id": "macos-specialist",
+      "name": "💻 macOS Dev",
+      "emoji": "💻",
+      "shortName": "macOS Dev",
+      "description": "Expert in macOS app development, AppKit, SwiftUI for macOS, and Mac App Store deployment",
+      "model": "opus",
+      "capabilities": [
+        "mobile-development",
+        "macos-development",
+        "design"
+      ],
+      "collaborators": [],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/macos-specialist.md",
+      "sourceHash": "411fb410bff4"
+    },
+    {
+      "id": "mcp-server-architect",
+      "name": "🏄🏼‍♂️ MCP Server Dude",
+      "emoji": "🏄🏼‍♂️",
+      "shortName": "MCP Server Dude",
+      "description": "MCP server architecture and implementation specialist. Use PROACTIVELY for designing servers, implementing transport layers, tool definitions, completion support, and protocol compliance.",
+      "model": "opus",
+      "capabilities": [
+        "design",
+        "mcp-servers"
+      ],
+      "collaborators": [],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/mcp-server-architect.md",
+      "sourceHash": "97b7fbfe7003"
+    },
+    {
+      "id": "mobile-dev",
+      "name": "📱 Mobile Developer",
+      "emoji": "📱",
+      "shortName": "Mobile Developer",
+      "description": "Expert in mobile app development (Swift for native iOS, React Native for cross-platform iOS/Android), UI frameworks, and app store deployment",
+      "model": "opus",
+      "capabilities": [
+        "ios-implementation",
+        "react-native",
+        "mobile-testing",
+        "app-store-deployment",
+        "swift-ui"
+      ],
+      "collaborators": [
+        "🏛️ Backend Developer",
+        "📐 UI Designer",
+        "🎨 Frontend Developer"
+      ],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/mobile-dev.md",
+      "sourceHash": "15b1586c3eb4"
+    },
+    {
+      "id": "product-strategist",
+      "name": "🎯 Product Strategist",
+      "emoji": "🎯",
+      "shortName": "Product Strategist",
+      "description": "Product strategy and roadmap planning specialist. Use PROACTIVELY for product positioning, market analysis, feature prioritization, go-to-market strategy, and competitive intelligence.",
+      "model": "sonnet",
+      "capabilities": [
+        "product-strategy"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/product-strategist.md",
+      "sourceHash": "8813979fe753"
+    },
+    {
+      "id": "research-agent",
+      "name": "🔍 Research Agent",
+      "emoji": "🔍",
+      "shortName": "Research Agent",
+      "description": "Comprehensive multi-source research with academic-level methodology, transparent citations, and Catalyst integration for deep investigations",
+      "model": "sonnet",
+      "capabilities": [
+        "research"
+      ],
+      "collaborators": [],
+      "department": "research",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/research-agent.md",
+      "sourceHash": "8ace521949ac"
+    },
+    {
+      "id": "second-brain-wizard",
+      "name": "🧠 2nd Brain Wizard",
+      "emoji": "🧠",
+      "shortName": "2nd Brain Wizard",
+      "description": "Personal knowledge management specialist for Drafts, Apple Notes, GoodNotes, Obsidian, and Apple Photos. Handles quick capture, handwritten notes, typed notes, vault organization, content curation, link discovery, MOC generation, knowledge graph optimization, and photo library management (osxphotos, PhotoScript, exif2findertags). Use PROACTIVELY for PKM workflows, vault maintenance, content quality assurance, and photo organization.",
+      "model": "sonnet",
+      "capabilities": [
+        "design",
+        "media-generation",
+        "knowledge-management",
+        "av-production",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "research",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/second-brain-wizard.md",
+      "sourceHash": "afc5e07c990a"
+    },
+    {
+      "id": "security-analyst",
+      "name": "🛡️ Security Analyst",
+      "emoji": "🛡️",
+      "shortName": "Security Analyst",
+      "description": "Comprehensive security assessment, threat modeling, vulnerability remediation, and OWASP compliance for all projects. Handles authentication systems, risk assessment, and compliance frameworks.",
+      "model": "opus",
+      "capabilities": [
+        "security-assessment",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "quality",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/security-analyst.md",
+      "sourceHash": "71d06405c49e"
+    },
+    {
+      "id": "seo-analyzer",
+      "name": "🔍 SEO Analyzer",
+      "emoji": "🔍",
+      "shortName": "SEO Analyzer",
+      "description": "SEO analysis and optimization specialist. Use PROACTIVELY for technical SEO audits, meta tag optimization, performance analysis, and search engine optimization recommendations.",
+      "model": "haiku",
+      "capabilities": [
+        "marketing"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/seo-analyzer.md",
+      "sourceHash": "f172c6207fe4"
+    },
+    {
+      "id": "shopify-specialist",
+      "name": "🛒 Shopify Exec",
+      "emoji": "🛒",
+      "shortName": "Shopify Exec",
+      "description": "Expert in Shopify theme development, store optimization, and e-commerce best practices",
+      "model": "opus",
+      "capabilities": [
+        "e-commerce"
+      ],
+      "collaborators": [],
+      "department": "engineering",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/shopify-specialist.md",
+      "sourceHash": "324b2aea6c1a"
+    },
+    {
+      "id": "studio-engineer",
+      "name": "🎬 Studio Engineer",
+      "emoji": "🎬",
+      "shortName": "Studio Engineer",
+      "description": "Professional A/V production software specialist for OBS Studio and DaVinci Resolve. Controls recording, streaming, video editing, and programmatic color grading via APIs and automation.",
+      "model": "sonnet",
+      "capabilities": [
+        "api-design",
+        "automation",
+        "media-generation",
+        "av-production"
+      ],
+      "collaborators": [],
+      "department": "creative",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/studio-engineer.md",
+      "sourceHash": "e053c339ad1e"
+    },
+    {
+      "id": "system-architect",
+      "name": "🏗️ System Architect",
+      "emoji": "🏗️",
+      "shortName": "System Architect",
+      "description": "System design for personal Mac projects and local development. Focus on simple, practical architecture for individual applications and personal tools.",
+      "model": "opus",
+      "capabilities": [
+        "design"
+      ],
+      "collaborators": [],
+      "department": "command",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/system-architect.md",
+      "sourceHash": "9a139b8bb0ce"
+    },
+    {
+      "id": "ui-designer",
+      "name": "📐 UI Designer",
+      "emoji": "📐",
+      "shortName": "UI Designer",
+      "description": "Product UI/UX specialist for user research, wireframes, prototypes, and design systems (Catalyst Design Studio workflow)",
+      "model": "sonnet",
+      "capabilities": [
+        "wireframes",
+        "design-system",
+        "user-flows",
+        "prototypes",
+        "visual-design",
+        "accessibility-guidelines"
+      ],
+      "collaborators": [
+        "🎨 Frontend Developer",
+        "📱 Mobile Developer"
+      ],
+      "department": "creative",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/ui-designer.md",
+      "sourceHash": "d91080031755"
+    },
+    {
+      "id": "validator",
+      "name": "🧪 Validator",
+      "emoji": "🧪",
+      "shortName": "Validator",
+      "description": "Comprehensive testing specialist for all Catalyst products - web, mobile, macOS, n8n workflows, APIs - with full automation capabilities",
+      "model": "opus",
+      "capabilities": [
+        "functional-testing",
+        "performance-testing",
+        "e2e-testing",
+        "visual-regression"
+      ],
+      "collaborators": [
+        "🧐 Code Reviewer",
+        "👾 Debugger",
+        "🏛️ Backend Developer",
+        "📱 Mobile Developer"
+      ],
+      "department": "quality",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/validator.md",
+      "sourceHash": "cf366be9600a"
+    },
+    {
+      "id": "venture-analyst",
+      "name": "🧭 Venture Analyst",
+      "emoji": "🧭",
+      "shortName": "Venture Analyst",
+      "description": "Pre-build idea validation and market research specialist. Use PROACTIVELY for business ideation, opportunity assessment, Lean Startup validation, customer discovery, and Go/No-Go decisions before committing to build.",
+      "model": "sonnet",
+      "capabilities": [
+        "design",
+        "research",
+        "business-analytics"
+      ],
+      "collaborators": [],
+      "department": "business",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/venture-analyst.md",
+      "sourceHash": "6d7bc29350f6"
+    },
+    {
+      "id": "visual-media-generator",
+      "name": "📸 Camera Man",
+      "emoji": "📸",
+      "shortName": "Camera Man",
+      "description": "AI-generated media specialist — photorealistic images (Gemini), video (Sora 2, Veo 3.1), product photography, image-to-video, video extension, and image upscaling (Real-ESRGAN). Primary operator for all realistic AI-generated visual content.",
+      "model": "sonnet",
+      "capabilities": [
+        "media-generation",
+        "ai-models"
+      ],
+      "collaborators": [],
+      "department": "creative",
+      "sourceFile": "{{CATALYST_ROOT}}/.claude/agents/visual-media-generator.md",
+      "sourceHash": "413704a881ad"
+    }
+  ],
+  "capability_map": {
+    "design": [
+      "🧊 3D Developer",
+      "🎨 Graphic Designer",
+      "💻 macOS Dev",
+      "🏄🏼‍♂️ MCP Server Dude",
+      "🧠 2nd Brain Wizard",
+      "🏗️ System Architect",
+      "🧭 Venture Analyst"
+    ],
+    "3d-modeling": [
+      "🧊 3D Developer"
+    ],
+    "ai-models": [
+      "🧊 3D Developer",
+      "🤓 AI Nerd",
+      "⛓️ Blockchain Agent",
+      "📣 Chief Marketing Officer",
+      "🎨 Graphic Designer",
+      "🧠 2nd Brain Wizard",
+      "🛡️ Security Analyst",
+      "📸 Camera Man"
+    ],
+    "algorithm-design": [
+      "🧮 Algo Wizard"
+    ],
+    "complexity-analysis": [
+      "🧮 Algo Wizard",
+      "🧐 Code Reviewer"
+    ],
+    "data-structure-selection": [
+      "🧮 Algo Wizard"
+    ],
+    "optimization": [
+      "🧮 Algo Wizard"
+    ],
+    "mathematical-modeling": [
+      "🧮 Algo Wizard"
+    ],
+    "macos-development": [
+      "🤖 Automator",
+      "💻 macOS Dev"
+    ],
+    "automation": [
+      "🤖 Automator",
+      "🐲 Bowser",
+      "🎬 Studio Engineer"
+    ],
+    "api-design": [
+      "🏛️ Backend Developer",
+      "🎬 Studio Engineer"
+    ],
+    "api-contract": [
+      "🏛️ Backend Developer"
+    ],
+    "database-schema": [
+      "🏛️ Backend Developer"
+    ],
+    "authentication": [
+      "🏛️ Backend Developer"
+    ],
+    "cloudflare-config": [
+      "🏛️ Backend Developer"
+    ],
+    "deployment": [
+      "🏛️ Backend Developer"
+    ],
+    "domain-management": [
+      "🏛️ Backend Developer"
+    ],
+    "dns-config": [
+      "🏛️ Backend Developer"
+    ],
+    "web-frontend": [
+      "⛓️ Blockchain Agent",
+      "🐲 Bowser"
+    ],
+    "security-assessment": [
+      "⛓️ Blockchain Agent",
+      "🛡️ Security Analyst"
+    ],
+    "blockchain": [
+      "⛓️ Blockchain Agent"
+    ],
+    "general": [
+      "👔 BOSS"
+    ],
+    "web-automation": [
+      "🐲 Bowser"
+    ],
+    "brand-integrity": [
+      "🎯 Brand Specialist",
+      "🎨 Graphic Designer"
+    ],
+    "business-analytics": [
+      "📊 Business Analyst",
+      "🧭 Venture Analyst"
+    ],
+    "marketing": [
+      "📣 Chief Marketing Officer",
+      "🔍 SEO Analyzer"
+    ],
+    "product-strategy": [
+      "📣 Chief Marketing Officer",
+      "🎯 Product Strategist"
+    ],
+    "code-quality-review": [
+      "🧐 Code Reviewer"
+    ],
+    "security-review": [
+      "🧐 Code Reviewer"
+    ],
+    "performance-review": [
+      "🧐 Code Reviewer"
+    ],
+    "root-cause-analysis": [
+      "👾 Debugger"
+    ],
+    "bug-investigation": [
+      "👾 Debugger"
+    ],
+    "pattern-learning": [
+      "👾 Debugger"
+    ],
+    "performance-debugging": [
+      "👾 Debugger"
+    ],
+    "react-components": [
+      "🎨 Frontend Developer"
+    ],
+    "accessibility-audit": [
+      "🎨 Frontend Developer"
+    ],
+    "animation-implementation": [
+      "🎨 Frontend Developer"
+    ],
+    "css-styling": [
+      "🎨 Frontend Developer"
+    ],
+    "state-management": [
+      "🎨 Frontend Developer"
+    ],
+    "media-generation": [
+      "🎨 Graphic Designer",
+      "🧠 2nd Brain Wizard",
+      "🎬 Studio Engineer",
+      "📸 Camera Man"
+    ],
+    "mobile-development": [
+      "💻 macOS Dev"
+    ],
+    "mcp-servers": [
+      "🏄🏼‍♂️ MCP Server Dude"
+    ],
+    "ios-implementation": [
+      "📱 Mobile Developer"
+    ],
+    "react-native": [
+      "📱 Mobile Developer"
+    ],
+    "mobile-testing": [
+      "📱 Mobile Developer"
+    ],
+    "app-store-deployment": [
+      "📱 Mobile Developer"
+    ],
+    "swift-ui": [
+      "📱 Mobile Developer"
+    ],
+    "research": [
+      "🔍 Research Agent",
+      "🧭 Venture Analyst"
+    ],
+    "knowledge-management": [
+      "🧠 2nd Brain Wizard"
+    ],
+    "av-production": [
+      "🧠 2nd Brain Wizard",
+      "🎬 Studio Engineer"
+    ],
+    "e-commerce": [
+      "🛒 Shopify Exec"
+    ],
+    "wireframes": [
+      "📐 UI Designer"
+    ],
+    "design-system": [
+      "📐 UI Designer"
+    ],
+    "user-flows": [
+      "📐 UI Designer"
+    ],
+    "prototypes": [
+      "📐 UI Designer"
+    ],
+    "visual-design": [
+      "📐 UI Designer"
+    ],
+    "accessibility-guidelines": [
+      "📐 UI Designer"
+    ],
+    "functional-testing": [
+      "🧪 Validator"
+    ],
+    "performance-testing": [
+      "🧪 Validator"
+    ],
+    "e2e-testing": [
+      "🧪 Validator"
+    ],
+    "visual-regression": [
+      "🧪 Validator"
+    ]
+  }
+}

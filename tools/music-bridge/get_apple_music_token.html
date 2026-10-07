@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Apple Music User Token</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+        button {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0051D5;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        #tokenDisplay {
+            background: #f8f9fa;
+            border: 2px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            display: none;
+        }
+        .token-value {
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 12px;
+            background: white;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #007AFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Get Apple Music User Token</h1>
+        <p class="subtitle">For ty-music-bridge CLI</p>
+
+        <div class="step">
+            <h3>Step 1: Enter Your Developer Token</h3>
+            <p>First, generate a developer token using the CLI:</p>
+            <code>./tymb test-apple-token</code>
+            <p>Or paste an existing developer token:</p>
+            <textarea id="devToken" rows="5" placeholder="Paste your Apple Developer Token here (starts with eyJ...)"></textarea>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Configure MusicKit</h3>
+            <input type="text" id="appName" value="ty-music-bridge" placeholder="App Name">
+            <input type="text" id="appBuild" value="1.0.0" placeholder="App Version">
+            <button onclick="configureMusicKit()">Configure MusicKit</button>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Authorize Apple Music</h3>
+            <button id="authBtn" onclick="authorizeAppleMusic()" disabled>Sign In with Apple Music</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div id="tokenDisplay">
+            <h3>✅ Success! Your User Token:</h3>
+            <div class="token-value" id="userToken"></div>
+            <p>Copy this token and add it to your .env file as:</p>
+            <code>APPLE_MUSIC_USER_TOKEN=&lt;token&gt;</code>
+            <button onclick="copyToken()">Copy Token</button>
+        </div>
+    </div>
+
+    <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+    <script>
+        let music = null;
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.className = 'status ' + type;
+            status.textContent = message;
+            status.style.display = 'block';
+        }
+
+        async function configureMusicKit() {
+            const devToken = document.getElementById('devToken').value.trim();
+            const appName = document.getElementById('appName').value || 'ty-music-bridge';
+            const appBuild = document.getElementById('appBuild').value || '1.0.0';
+
+            if (!devToken) {
+                showStatus('Please enter a developer token first', 'error');
+                return;
+            }
+
+            try {
+                await MusicKit.configure({
+                    developerToken: devToken,
+                    app: {
+                        name: appName,
+                        build: appBuild
+                    }
+                });
+
+                music = MusicKit.getInstance();
+                document.getElementById('authBtn').disabled = false;
+                showStatus('MusicKit configured! Now click "Sign In with Apple Music"', 'success');
+            } catch (error) {
+                showStatus('Error configuring MusicKit: ' + error.message, 'error');
+                console.error('Configuration error:', error);
+            }
+        }
+
+        async function authorizeAppleMusic() {
+            if (!music) {
+                showStatus('Please configure MusicKit first', 'error');
+                return;
+            }
+
+            try {
+                showStatus('Opening Apple Music authorization...', 'info');
+
+                const userToken = await music.authorize();
+
+                if (userToken) {
+                    document.getElementById('userToken').textContent = userToken;
+                    document.getElementById('tokenDisplay').style.display = 'block';
+                    showStatus('Authorization successful!', 'success');
+
+                    // Test the token
+                    try {
+                        const response = await music.api.music('/v1/me/library/playlists', {
+                            limit: 1
+                        });
+                        const playlistCount = response.data.meta?.total || 0;
+                        showStatus(`Authorization successful! Found ${playlistCount} playlists in your library.`, 'success');
+                    } catch (e) {
+                        showStatus('Authorization successful! Token retrieved.', 'success');
+                    }
+                } else {
+                    showStatus('Authorization was cancelled', 'error');
+                }
+            } catch (error) {
+                showStatus('Authorization error: ' + error.message, 'error');
+                console.error('Auth error:', error);
+            }
+        }
+
+        function copyToken() {
+            const token = document.getElementById('userToken').textContent;
+            navigator.clipboard.writeText(token).then(() => {
+                showStatus('Token copied to clipboard!', 'success');
+            }).catch(() => {
+                showStatus('Failed to copy. Please select and copy manually.', 'error');
+            });
+        }
+
+        // Auto-fill developer token if it's in the URL hash (for easier testing)
+        if (window.location.hash) {
+            const token = window.location.hash.substring(1);
+            if (token.startsWith('eyJ')) {
+                document.getElementById('devToken').value = token;
+            }
+        }
+    </script>
+</body>
+</html>

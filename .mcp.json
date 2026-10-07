@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "description": "Catalyst MCP servers - all npx-based, zero local setup required",
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "description": "File system access with configurable directory scope"
+    },
+    "builder-memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Persistent memory for maintaining context across conversations"
+    },
+    "iterm-mcp": {
+      "command": "npx",
+      "args": ["-y", "iterm-mcp"],
+      "description": "iTerm terminal integration - interact with running processes"
+    },
+    "siri-shortcuts": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-siri-shortcuts"],
+      "description": "Trigger Siri Shortcuts from Claude Code"
+    },
+    "shadcn-ui": {
+      "command": "npx",
+      "args": ["-y", "@jpisnice/shadcn-ui-mcp-server"],
+      "description": "Shadcn/UI component library reference"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp", "--browser", "chromium"],
+      "env": {
+        "PLAYWRIGHT_MCP_BROWSER": "chromium",
+        "PLAYWRIGHT_MCP_HEADLESS": "true"
+      },
+      "description": "Web automation and testing via Playwright"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Up-to-date documentation for any library or framework"
+    },
+    "google-workspace": {
+      "command": "uvx",
+      "args": ["--from", "google-workspace-mcp", "--python", "3.12", "google-workspace-worker"],
+      "env": {
+        "GOOGLE_WORKSPACE_CLIENT_ID": "${GOOGLE_WORKSPACE_CLIENT_ID}",
+        "GOOGLE_WORKSPACE_CLIENT_SECRET": "${GOOGLE_WORKSPACE_CLIENT_SECRET}"
+      },
+      "description": "Gmail management via Google Workspace MCP (set both env vars in your shell before launching Claude Code, or remove this server if unused)"
+    }
+  }
+}

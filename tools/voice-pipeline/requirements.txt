@@ -1,0 +1,5 @@
+mlx-whisper>=0.4.0
+noisereduce>=3.0.0
+soundfile>=0.12.0
+watchdog>=4.0.0
+pyyaml>=6.0

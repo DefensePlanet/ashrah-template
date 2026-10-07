@@ -1,0 +1,97 @@
+# export-template policy (example)
+# ---------------------------------------------------------------------------
+# Copy to export.yaml (same folder) and fill in YOUR values, then:
+#   scripts/export-template/export.sh --dry-run
+#   scripts/export-template/export.sh --out ~/my-template
+#   scripts/export-template/export.sh --out ~/my-template --push https://github.com/<you>/<template>.git
+#
+# export.yaml names everything it scrubs, so keep it out of anything you
+# publish: the exclude list below already drops it from the export.
+# ---------------------------------------------------------------------------
+
+template:
+  name: "My Template"
+  version: "0.1.0"
+  default_branch: main
+  commit_author_name: "Template Builder"
+  commit_author_email: "noreply@users.noreply.github.com"
+
+source:
+  mode: git-visible          # tracked + untracked-not-ignored files
+
+# gitignore-style globs; last match wins; "!" re-includes; trailing "/" = folder
+exclude:
+  - ".git/"
+  - "node_modules/"
+  - ".venv/"
+  - "__pycache__/"
+  - ".env"
+  - ".env.*"
+  - "!.env.example"
+  - ".catalyst-config"
+  - ".claude/settings.local.json"
+  - "memory/"
+  - "logs/"
+  - "capsules/*/"
+  - "!capsules/example/"
+  - "*.db"
+  - "scripts/export-template/export.yaml"
+  - "scripts/export-template/template-files/"
+
+# Structural edits before substitution.
+transforms:
+  - type: drop_md_sections          # heading through the next same-level heading
+    paths: ["CLAUDE.md"]
+    heading_regex: '^#{2,4} +(My Private Section)'
+  # - type: drop_yaml_blocks        # a mapping key and its indented body
+  #   paths: ["global/config/port-registry.yaml"]
+  #   key_regex: '^  (my-private-app):\s*$'
+  # - type: drop_lines
+  #   paths: ["SOUL.md"]
+  #   line_regex: 'my-private-project'
+
+fix_mojibake:
+  enabled: true
+  paths: ["**"]
+
+# Ordered, longest first. "token: NAME" writes the double-curly token NAME,
+# which setup.sh fills on the new owner's machine. Literal unless regex: true.
+substitutions:
+  - {name: repo-root,  find: "/Users/me/my-repo", token: CATALYST_ROOT}
+  - {name: home,       find: "/Users/me",         token: HOME_DIR}
+  - {name: slug,       find: "-Users-me-my-repo", token: CLAUDE_PROJECT_SLUG}
+  - {name: email,      find: "me@example.com",    token: USER_EMAIL}
+  - {name: full-name,  find: "My Full Name",      token: USER_NAME}
+  - {name: github,     find: "my-github-user",    token: GITHUB_USER}
+  - {name: orch-upper, find: "MYBOT",             token: ORCHESTRATOR_NAME_UPPER}
+  - {name: orch,       find: "Mybot",             token: ORCHESTRATOR_NAME}
+  - {name: orch-lower, find: "mybot",             token: ORCHESTRATOR_NAME_LOWER}
+  - {name: first-name, find: '\bMyFirstName\b',   token: USER_NAME, regex: true, rename_paths: false}
+
+# Nothing below may appear in the output (Python regex).
+verify_patterns:
+  - {name: login,      regex: '/Users/me/'}
+  - {name: email,      regex: 'me@example\.com'}
+  - {name: full-name,  regex: 'My\s*Full\s*Name', ignore_case: true}
+  - {name: chat-id,    regex: '(chat_id|CHAT_ID|TELEGRAM_[A-Z_]*ID)[^0-9]{0,20}[0-9]{8,}'}
+  - name: us-phone
+    regex: '(?<![v0-9.])\b\(?[0-9]{3}\)?[-. ][0-9]{3}[-. ][0-9]{4}\b'
+    only_ext: [".md", ".txt", ".yaml", ".yml", ".json"]
+
+warn_patterns: []
+
+verify_allow:
+  - {pattern: us-phone, match: '555[-. ][0-9]{3}[-. ][0-9]{4}'}
+
+verify_paths_must_exist:
+  - CLAUDE.md
+  - README.md
+  - setup.sh
+  - .claude/agents
+
+verify_agent_frontmatter:
+  dir: .claude/agents
+  required_keys: [name, description, model]
+
+verify_mojibake:
+  fatal_paths: ["CLAUDE.md", ".claude/agents/**"]

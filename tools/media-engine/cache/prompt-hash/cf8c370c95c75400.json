@@ -1,0 +1,49 @@
+{
+  "cache_key": "cf8c370c95c75400",
+  "prompt": "Test video",
+  "model": "openai/sora-2",
+  "media_type": "video",
+  "resolution": "1080p",
+  "output_path": "{{CATALYST_ROOT}}/generated-media/2026-02-08/video/dry_run_output.png",
+  "created_at": 1770586823.6673799,
+  "config_subset": {
+    "model": "openai/sora-2",
+    "media_type": "video",
+    "auth": "openrouter",
+    "auth_provider": "openrouter",
+    "generation": {
+      "resolution": "1080p",
+      "aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "duration": "15s",
+      "fps": 24,
+      "camera_motion": "slow_dolly",
+      "audio": "none"
+    },
+    "refinement": {
+      "mode": "agent_in_loop",
+      "max_iterations": 3,
+      "quality_threshold": 0.8,
+      "regression_cutoff": true,
+      "evaluate_criteria": [
+        "motion_consistency",
+        "brand_alignment",
+        "scene_coherence"
+      ],
+      "hard_checks": [
+        "file_exists",
+        "file_not_empty",
+        "not_corrupted"
+      ]
+    },
+    "consistency": {
+      "reference_images": 4,
+      "style_weight": 0.8,
+      "character_lock": false
+    }
+  },
+  "references": [],
+  "source_image": ""
+}

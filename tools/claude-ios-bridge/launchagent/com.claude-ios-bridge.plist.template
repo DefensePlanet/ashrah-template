@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.claude-ios-bridge</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/bun</string>
+        <string>run</string>
+        <string>src/index.ts</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>{{CATALYST_ROOT}}/tools/claude-ios-bridge</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:{{HOME_DIR}}/.local/bin:{{HOME_DIR}}/.bun/bin</string>
+        <key>HOME</key>
+        <string>{{HOME_DIR}}</string>
+        <key>CLAUDE_BRIDGE_PORT</key>
+        <string>5200</string>
+        <key>CLAUDE_BRIDGE_HOST</key>
+        <string>0.0.0.0</string>
+        <key>CLAUDE_BRIDGE_API_KEY</key>
+        <string>REPLACE_WITH_YOUR_API_KEY</string>
+        <key>CLAUDE_WORKING_DIR</key>
+        <string>{{CATALYST_ROOT}}</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/claude-ios-bridge.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/claude-ios-bridge.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>LowPriorityIO</key>
+    <false/>
+
+    <key>Nice</key>
+    <integer>0</integer>
+</dict>
+</plist>

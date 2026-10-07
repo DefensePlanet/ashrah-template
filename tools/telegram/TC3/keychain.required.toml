@@ -1,0 +1,19 @@
+# keychain.required.toml — TC3 {{ORCHESTRATOR_NAME}} Hybrid (Telegram Bot)
+# Defines secrets that must exist in macOS Keychain for this capsule to function.
+# Run `python3 tools/check-secrets.py` to verify all secrets are present.
+# Run `python3 tools/check-secrets.py --setup` to see setup commands for missing secrets.
+
+[secrets]
+TELEGRAM_BOT_TOKEN = { service = "tc3-telegram-bot-token", account = "catalyst" }
+OPENAI_API_KEY     = { service = "openai-api-key", account = "catalyst" }
+
+[public]
+# Variables that stay in .env (not secrets)
+TELEGRAM_ALLOWED_USERS  = "Comma-separated Telegram user IDs allowed to interact with bot"
+CLAUDE_WORKING_DIR      = "Filesystem path for Claude's working directory"
+TRANSCRIPTION_CONTEXT   = "Context keywords for voice transcription accuracy"
+THINKING_KEYWORDS       = "Comma-separated keywords that trigger thinking mode"
+THINKING_DEEP_KEYWORDS  = "Comma-separated keywords that trigger deep thinking mode"
+RATE_LIMIT_ENABLED      = "Enable/disable rate limiting (boolean)"
+RATE_LIMIT_REQUESTS     = "Maximum requests per rate limit window (integer)"
+RATE_LIMIT_WINDOW       = "Rate limit window duration in seconds (integer)"

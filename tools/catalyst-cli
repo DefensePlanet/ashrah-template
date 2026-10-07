@@ -1,0 +1,209 @@
+#!/bin/bash
+# Catalyst Portal Management CLI
+# Manages all Catalyst Portal services via PM2
+
+set -euo pipefail
+
+# Ensure PM2 is in PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
+CATALYST_ROOT="{{CATALYST_ROOT}}"
+ECOSYSTEM_CONFIG="$CATALYST_ROOT/tools/catalyst-portal.ecosystem.config.js"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Check if PM2 is installed
+if ! command -v pm2 &> /dev/null; then
+    echo -e "${RED}❌ PM2 is not installed!${NC}"
+    echo "Install it with: npm install -g pm2"
+    exit 1
+fi
+
+# Check if ecosystem config exists
+if [ ! -f "$ECOSYSTEM_CONFIG" ]; then
+    echo -e "${RED}❌ Ecosystem config not found at: $ECOSYSTEM_CONFIG${NC}"
+    exit 1
+fi
+
+case "${1:-help}" in
+    start-core)
+        echo -e "${BLUE}🚀 Starting core services (Caddy, Agent API, Bifrost, Claude Router)...${NC}"
+        pm2 start "$ECOSYSTEM_CONFIG" --only caddy,agent-api,bifrost-gateway,claude-router
+        echo -e "${GREEN}✅ Core services started${NC}"
+        pm2 status
+        ;;
+
+    start-dev)
+        echo -e "${BLUE}🛠️  Starting dev services (Plasmic Backend, Plasmic Frontend, Vite Portal)...${NC}"
+
+        # Start dev services (idempotent - won't error if already running)
+        pm2 start "$ECOSYSTEM_CONFIG" --only plasmic-backend,plasmic-frontend,vite-portal 2>/dev/null || pm2 restart plasmic-backend plasmic-frontend vite-portal
+
+        # Update activity timestamp (milliseconds)
+        mkdir -p /tmp/catalyst
+        /opt/homebrew/bin/node -e "console.log(Date.now())" > /tmp/catalyst/dev-services-last-activity
+
+        # Start monitor if not already running
+        if pm2 list | grep -q "dev-services-monitor.*online"; then
+            echo -e "${BLUE}🔍 Monitor already running${NC}"
+        else
+            echo -e "${BLUE}🔍 Starting idle monitor...${NC}"
+            pm2 start "$ECOSYSTEM_CONFIG" --only dev-services-monitor
+        fi
+
+        echo -e "${GREEN}✅ Dev services started with idle monitoring${NC}"
+        pm2 status
+        ;;
+
+    start-all)
+        echo -e "${BLUE}🚀 Starting all services...${NC}"
+        pm2 start "$ECOSYSTEM_CONFIG"
+        echo -e "${GREEN}✅ All services started${NC}"
+        pm2 status
+        ;;
+
+    stop-core)
+        echo -e "${YELLOW}⏸️  Stopping core services...${NC}"
+        pm2 stop caddy agent-api bifrost-gateway claude-router
+        echo -e "${GREEN}✅ Core services stopped${NC}"
+        ;;
+
+    stop-dev)
+        echo -e "${YELLOW}⏸️  Stopping dev services...${NC}"
+        pm2 stop plasmic-backend plasmic-frontend vite-portal
+        echo -e "${GREEN}✅ Dev services stopped${NC}"
+        ;;
+
+    stop-all)
+        echo -e "${YELLOW}⏸️  Stopping all services...${NC}"
+        pm2 stop all
+        echo -e "${GREEN}✅ All services stopped${NC}"
+        ;;
+
+    restart)
+        if [ -z "${2:-}" ]; then
+            echo -e "${YELLOW}♻️  Restarting all services...${NC}"
+            pm2 restart all
+        else
+            echo -e "${YELLOW}♻️  Restarting $2...${NC}"
+            pm2 restart "$2"
+        fi
+        echo -e "${GREEN}✅ Restart complete${NC}"
+        pm2 status
+        ;;
+
+    status)
+        pm2 status
+        ;;
+
+    logs)
+        if [ -z "${2:-}" ]; then
+            echo -e "${BLUE}📋 Showing logs for all services...${NC}"
+            pm2 logs
+        else
+            echo -e "${BLUE}📋 Showing logs for $2...${NC}"
+            pm2 logs "$2"
+        fi
+        ;;
+
+    monit)
+        echo -e "${BLUE}📊 Opening PM2 monitor...${NC}"
+        pm2 monit
+        ;;
+
+    list)
+        pm2 list
+        ;;
+
+    delete)
+        if [ -z "${2:-}" ]; then
+            echo -e "${RED}❌ Please specify a service to delete${NC}"
+            echo "Usage: catalyst delete <service-name>"
+            exit 1
+        fi
+        echo -e "${YELLOW}🗑️  Deleting $2...${NC}"
+        pm2 delete "$2"
+        echo -e "${GREEN}✅ Service deleted${NC}"
+        ;;
+
+    delete-all)
+        echo -e "${YELLOW}🗑️  Deleting all PM2 processes...${NC}"
+        pm2 delete all
+        echo -e "${GREEN}✅ All processes deleted${NC}"
+        ;;
+
+    save)
+        echo -e "${BLUE}💾 Saving current PM2 process list...${NC}"
+        pm2 save
+        echo -e "${GREEN}✅ Process list saved (will auto-start on login)${NC}"
+        ;;
+
+    resurrect)
+        echo -e "${BLUE}🔄 Resurrecting saved PM2 processes...${NC}"
+        pm2 resurrect
+        echo -e "${GREEN}✅ Processes restored${NC}"
+        pm2 status
+        ;;
+
+    kill)
+        echo -e "${RED}💀 Killing PM2 daemon...${NC}"
+        pm2 kill
+        echo -e "${YELLOW}⚠️  PM2 daemon stopped. Services will not auto-restart.${NC}"
+        ;;
+
+    help|*)
+        cat <<EOF
+${BLUE}Catalyst Portal Management CLI${NC}
+
+${GREEN}Core Services:${NC}
+  start-core          Start core services (Caddy, Agent API, Bifrost, Claude Router)
+  stop-core           Stop core services
+
+${GREEN}Dev Services:${NC}
+  start-dev           Start dev services (Plasmic Backend, Frontend, Vite Portal)
+  stop-dev            Stop dev services
+
+${GREEN}All Services:${NC}
+  start-all           Start all services (core + dev)
+  stop-all            Stop all services
+
+${GREEN}Service Management:${NC}
+  restart [service]   Restart a service (or all if none specified)
+  status              Show status of all services
+  logs [service]      Show logs for a service (or all if none specified)
+  monit               Open PM2 monitor dashboard
+  list                List all PM2 processes
+
+${GREEN}Process Management:${NC}
+  delete <service>    Delete a specific service from PM2
+  delete-all          Delete all PM2 processes
+  save                Save current process list (auto-start on login)
+  resurrect           Restore saved processes
+  kill                Kill PM2 daemon (stops all auto-restart)
+
+${GREEN}Core Services:${NC}
+  - caddy             (Port 443)  Reverse proxy for Catalyst Portal
+  - agent-api         (Port 8080) Catalyst Agent Orchestration API
+  - bifrost-gateway   (Port 8083) Bifrost gateway for AI model routing
+  - claude-router     (Port 3456) Claude Code Router
+
+${GREEN}Dev Services:${NC}
+  - plasmic-backend   (Port 3004) Plasmic Studio backend
+  - plasmic-frontend  (Port 3003) Plasmic Studio frontend
+  - vite-portal       (Port 5174) Vite development server for portal
+
+${GREEN}Examples:${NC}
+  catalyst start-core           # Start only core services
+  catalyst start-dev            # Start development services
+  catalyst status               # View service status
+  catalyst logs caddy           # View Caddy logs
+  catalyst restart agent-api    # Restart Agent API
+  catalyst save                 # Save current state for auto-start
+EOF
+        ;;
+esac

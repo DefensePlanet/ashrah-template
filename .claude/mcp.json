@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "catalyst-tasks": {
+      "command": "{{CATALYST_ROOT}}/tools/catalyst-mcp/start.sh",
+      "env": {
+        "CATALYST_DB": "{{CATALYST_ROOT}}/tasks.db"
+      }
+    },
+    "chrome-devtools": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--executablePath=/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+        "--headless",
+        "--isolated"
+      ],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+      }
+    },
+    "context7": {
+      "command": "node",
+      "args": [
+        "{{HOME_DIR}}/Development/context7/dist/index.js",
+        "--transport",
+        "stdio"
+      ],
+      "description": "Context7 - Up-to-date documentation and API references for any library/framework"
+    }
+  }
+}

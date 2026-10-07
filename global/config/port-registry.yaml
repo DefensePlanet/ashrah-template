@@ -1,0 +1,70 @@
+# Port Registry — Single Source of Truth
+# All port assignments for Catalyst services
+# Rule: Check this file BEFORE starting any service on any port
+
+# ─────────────────────────────────────────────────
+# Web Portals & Dev Servers
+# ─────────────────────────────────────────────────
+portals:
+  design-system:
+    port: 5174
+    description: Catalyst Design System dev server
+    framework: Vite
+
+  # Add your capsule dev servers here:
+  # my-capsule:
+  #   port: 5179
+  #   description: My project dev server
+  #   framework: Vite
+
+# ─────────────────────────────────────────────────
+# APIs & Backend Services
+# ─────────────────────────────────────────────────
+apis:
+  cartpanda-webhook:
+    port: 3201
+    description: CartPanda webhook receiver (HMAC-verified order/fulfillment events; expose via ngrok/cloudflared)
+    framework: FastAPI (uvicorn)
+    path: tools/cartpanda
+
+  # my-api:
+  #   port: 3002
+  #   description: My capsule API server
+  #   framework: Hono
+
+# ─────────────────────────────────────────────────
+# Infrastructure Services
+# ─────────────────────────────────────────────────
+infrastructure:
+  claude-code-router:
+    port: 3456
+    description: Claude Code Router (Infinity mode)
+    framework: Express
+
+  agent-memory:
+    port: 8090
+    description: Agent memory MCP (ChromaDB)
+    framework: Python
+
+  pushgateway:
+    port: 9092
+    description: Prometheus Pushgateway — service-health-push daemon pushes catalyst_service_up metrics here
+    framework: Prometheus Pushgateway
+    path: core/native/catalyst-daemons/cmd/service-health-push
+
+  syncthing-gui:
+    port: 8384
+    description: Syncthing web GUI + REST API (remote-dev two-Mac sync, loopback only)
+    framework: Syncthing
+    path: tools/remote-dev
+
+# ─────────────────────────────────────────────────
+# OAuth Loopback Callbacks (ephemeral — bound only during auth flows;
+# skipped by the service-health-push daemon)
+# ─────────────────────────────────────────────────
+oauth:
+  youtube-api:
+    port: 8085
+    description: YouTube Data API v3 OAuth consent redirect (InstalledAppFlow.run_local_server)
+    framework: Python (google-auth-oauthlib)
+    path: tools/youtube-api

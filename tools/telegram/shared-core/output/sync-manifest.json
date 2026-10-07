@@ -1,0 +1,247 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-02-17T07:23:45.378Z",
+  "schema_version": 1,
+  "agents": [
+    {
+      "id": "3d-developer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/3d-developer.md",
+      "source_hash": "428b937ca495",
+      "index_hash": "a9b65eda907b",
+      "pack_hash": "428b937ca495",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "ai-config-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/ai-config-specialist.md",
+      "source_hash": "92487ebb6093",
+      "index_hash": "5d27e2122592",
+      "pack_hash": "92487ebb6093",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "algo-wizard",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/algo-wizard.md",
+      "source_hash": "0ac0089c51e4",
+      "index_hash": "d343c06e015d",
+      "pack_hash": "0ac0089c51e4",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "automation-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/automation-specialist.md",
+      "source_hash": "5937e8105099",
+      "index_hash": "fe265d41c8a3",
+      "pack_hash": "5937e8105099",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "backend-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/backend-specialist.md",
+      "source_hash": "4f32f792c0d2",
+      "index_hash": "652f258246e5",
+      "pack_hash": "4f32f792c0d2",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "blockchain-web3-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/blockchain-web3-specialist.md",
+      "source_hash": "56a107efe6ee",
+      "index_hash": "84ab5e29cbc5",
+      "pack_hash": "56a107efe6ee",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "boss",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/boss.md",
+      "source_hash": "1cc1f2bc4ee1",
+      "index_hash": "b4e162a4febd",
+      "pack_hash": "1cc1f2bc4ee1",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "bowser",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/bowser.md",
+      "source_hash": "b2d789eecbca",
+      "index_hash": "0c5b205ad07a",
+      "pack_hash": "b2d789eecbca",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "brand-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/brand-specialist.md",
+      "source_hash": "18f2479e8bc4",
+      "index_hash": "6f9a25c16b09",
+      "pack_hash": "18f2479e8bc4",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "business-analyst",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/business-analyst.md",
+      "source_hash": "d86b6f3f9e6c",
+      "index_hash": "e4982896b02a",
+      "pack_hash": "d86b6f3f9e6c",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "chief-marketing-officer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/chief-marketing-officer.md",
+      "source_hash": "ce37f3800941",
+      "index_hash": "cdd7c9a2c132",
+      "pack_hash": "ce37f3800941",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "code-reviewer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/code-reviewer.md",
+      "source_hash": "709206837eb9",
+      "index_hash": "0bf69020bb6a",
+      "pack_hash": "709206837eb9",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "debugger",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/debugger.md",
+      "source_hash": "fede3e90f3ef",
+      "index_hash": "09d8a1dd10ed",
+      "pack_hash": "fede3e90f3ef",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "frontend-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/frontend-specialist.md",
+      "source_hash": "f4d01df8ee8d",
+      "index_hash": "035b9169915a",
+      "pack_hash": "f4d01df8ee8d",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "graphic-designer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/graphic-designer.md",
+      "source_hash": "3cb4fe2758f5",
+      "index_hash": "756ff3a1c548",
+      "pack_hash": "3cb4fe2758f5",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "macos-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/macos-specialist.md",
+      "source_hash": "411fb410bff4",
+      "index_hash": "ec46382574af",
+      "pack_hash": "411fb410bff4",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "mcp-server-architect",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/mcp-server-architect.md",
+      "source_hash": "97b7fbfe7003",
+      "index_hash": "433e854ebdfb",
+      "pack_hash": "97b7fbfe7003",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "mobile-dev",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/mobile-dev.md",
+      "source_hash": "15b1586c3eb4",
+      "index_hash": "a7581ea1463a",
+      "pack_hash": "15b1586c3eb4",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "product-strategist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/product-strategist.md",
+      "source_hash": "8813979fe753",
+      "index_hash": "c8f8bff111e4",
+      "pack_hash": "8813979fe753",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "research-agent",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/research-agent.md",
+      "source_hash": "8ace521949ac",
+      "index_hash": "8e8290a47253",
+      "pack_hash": "8ace521949ac",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "second-brain-wizard",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/second-brain-wizard.md",
+      "source_hash": "afc5e07c990a",
+      "index_hash": "a3577195dcaa",
+      "pack_hash": "afc5e07c990a",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "security-analyst",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/security-analyst.md",
+      "source_hash": "71d06405c49e",
+      "index_hash": "610f0acbe590",
+      "pack_hash": "71d06405c49e",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "seo-analyzer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/seo-analyzer.md",
+      "source_hash": "f172c6207fe4",
+      "index_hash": "18755e9a69aa",
+      "pack_hash": "f172c6207fe4",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "shopify-specialist",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/shopify-specialist.md",
+      "source_hash": "324b2aea6c1a",
+      "index_hash": "86b56a5905de",
+      "pack_hash": "324b2aea6c1a",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "studio-engineer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/studio-engineer.md",
+      "source_hash": "e053c339ad1e",
+      "index_hash": "1601f3b2abb1",
+      "pack_hash": "e053c339ad1e",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "system-architect",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/system-architect.md",
+      "source_hash": "9a139b8bb0ce",
+      "index_hash": "10e80d0b6530",
+      "pack_hash": "9a139b8bb0ce",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "ui-designer",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/ui-designer.md",
+      "source_hash": "d91080031755",
+      "index_hash": "3ca5c2e3ed32",
+      "pack_hash": "d91080031755",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "validator",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/validator.md",
+      "source_hash": "cf366be9600a",
+      "index_hash": "185af9951b1b",
+      "pack_hash": "cf366be9600a",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "venture-analyst",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/venture-analyst.md",
+      "source_hash": "6d7bc29350f6",
+      "index_hash": "e29450a52dce",
+      "pack_hash": "6d7bc29350f6",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    },
+    {
+      "id": "visual-media-generator",
+      "source_path": "{{CATALYST_ROOT}}/.claude/agents/visual-media-generator.md",
+      "source_hash": "413704a881ad",
+      "index_hash": "5a2b4867d0ec",
+      "pack_hash": "413704a881ad",
+      "last_synced": "2026-02-17T07:23:45.378Z"
+    }
+  ]
+}

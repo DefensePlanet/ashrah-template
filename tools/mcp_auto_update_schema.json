@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "description": "Enhanced MCP configuration with GitHub auto-update tracking",
+  "mcpServers": {
+    "builder-memory": {
+      "type": "stdio", 
+      "command": "npx @modelcontextprotocol/server-memory",
+      "repository": {
+        "type": "npm",
+        "package": "@modelcontextprotocol/server-memory",
+        "auto_update": true,
+        "update_channel": "stable"
+      }
+    },
+    "bridge-mcp": {
+      "type": "stdio",
+      "command": "{{CATALYST_ROOT}}/tools/bridge-mcp/bridge-mcp.js",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/{{USER_NAME}}/bridge-mcp",
+        "branch": "main",
+        "local_path": "{{CATALYST_ROOT}}/tools/bridge-mcp",
+        "auto_update": true,
+        "update_channel": "stable",
+        "build_command": "npm install && npm run build"
+      }
+    },
+    "apple-doc-mcp": {
+      "type": "stdio", 
+      "command": "node {{CATALYST_ROOT}}/global/apple-doc-mcp/src/web/site/apple-doc-mcp/dist/index.js",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/{{USER_NAME}}/apple-doc-mcp",
+        "branch": "main", 
+        "local_path": "{{CATALYST_ROOT}}/global/apple-doc-mcp",
+        "auto_update": true,
+        "update_channel": "stable",
+        "build_command": "npm install && npm run build"
+      }
+    },
+    "enhanced-iterm-mcp": {
+      "type": "stdio",
+      "command": "enhanced-iterm-mcp",
+      "repository": {
+        "type": "npm",
+        "package": "enhanced-iterm-mcp",
+        "auto_update": true,
+        "update_channel": "stable"
+      }
+    },
+    "shadcn-ui": {
+      "type": "stdio",
+      "command": "npx -y @jpisnice/shadcn-ui-mcp-server",
+      "repository": {
+        "type": "npm", 
+        "package": "@jpisnice/shadcn-ui-mcp-server",
+        "auto_update": true,
+        "update_channel": "stable"
+      }
+    },
+    "git-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://gitmcp.io/idosal/git-mcp"],
+      "repository": {
+        "type": "remote",
+        "url": "https://github.com/idosal/git-mcp", 
+        "auto_update": true,
+        "update_channel": "stable",
+        "note": "Already auto-updates via mcp-remote"
+      }
+    }
+  },
+  "update_settings": {
+    "check_interval": "weekly",
+    "auto_restart_claude": true,
+    "backup_before_update": true,
+    "rollback_on_failure": true,
+    "notification_method": "terminal",
+    "update_log": "{{CATALYST_ROOT}}/logs/mcp_updates.log"
+  }
+}

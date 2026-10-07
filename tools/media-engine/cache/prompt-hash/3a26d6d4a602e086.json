@@ -1,0 +1,49 @@
+{
+  "cache_key": "3a26d6d4a602e086",
+  "prompt": "Test prompt",
+  "model": "google/gemini-3-pro-image-preview",
+  "media_type": "image",
+  "resolution": "4K",
+  "output_path": "{{CATALYST_ROOT}}/generated-media/default/2026-02-10/dry_run_output.png",
+  "created_at": 1770757586.9439769,
+  "config_subset": {
+    "model": "google/gemini-3-pro-image-preview",
+    "media_type": "image",
+    "auth": "openrouter",
+    "auth_provider": "openrouter",
+    "generation": {
+      "resolution": "4K",
+      "aspect_ratios": [
+        "1:1",
+        "4:3",
+        "16:9"
+      ]
+    },
+    "refinement": {
+      "mode": "autonomous",
+      "max_iterations": 5,
+      "quality_threshold": 0.85,
+      "regression_cutoff": true,
+      "evaluate_criteria": [
+        "lighting_consistency",
+        "text_legibility",
+        "brand_alignment",
+        "background_cleanliness",
+        "product_focus"
+      ],
+      "hard_checks": [
+        "file_exists",
+        "file_not_empty",
+        "resolution_match",
+        "no_artifacts"
+      ]
+    },
+    "consistency": {
+      "reference_images": 6,
+      "style_weight": 0.7,
+      "character_lock": false
+    }
+  },
+  "references": [],
+  "source_image": ""
+}

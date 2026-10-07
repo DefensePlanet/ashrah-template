@@ -1,0 +1,11 @@
+{
+  "clients": {
+    "default": {
+      "mcpServers": {
+        "bridge": {
+          "command": "$HOME/Documents/Builder/tools/bridge-mcp/start.sh"
+        }
+      }
+    }
+  }
+}

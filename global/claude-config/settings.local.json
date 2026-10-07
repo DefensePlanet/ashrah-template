@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "*",
+      "mcp__filesystem__directory_tree"
+    ],
+    "deny": [],
+    "defaultMode": "bypassPermissions",
+    "bypassPermissions": true
+  }
+}

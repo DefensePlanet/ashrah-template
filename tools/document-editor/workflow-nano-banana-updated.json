@@ -1,0 +1,248 @@
+{
+  "name": "Check Address Replacement - Nano Banana",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule - Every 30 seconds",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [20, 304]
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import os\nimport json\nfrom pathlib import Path\n\n# Watch directory\nwatch_dir = Path('{{CATALYST_ROOT}}/tools/document-editor/input')\nprocessed_file = watch_dir / '.processed_files.json'\n\n# Load previously processed files\nif processed_file.exists():\n    with open(processed_file, 'r') as f:\n        processed = json.load(f)\nelse:\n    processed = []\n\n# Find new image files\nimage_extensions = {'.png', '.jpg', '.jpeg', '.tiff', '.bmp'}\nnew_files = []\n\nif watch_dir.exists():\n    for file_path in watch_dir.iterdir():\n        if file_path.is_file() and file_path.suffix.lower() in image_extensions:\n            file_str = str(file_path)\n            if file_str not in processed:\n                new_files.append(file_str)\n                processed.append(file_str)\n\n# Save updated processed list\nwith open(processed_file, 'w') as f:\n    json.dump(processed, f)\n\n# Return new files to process\nif new_files:\n    return [{'json': {'file_path': fp}} for fp in new_files]\nelse:\n    # No new files - stop execution\n    return []"
+      },
+      "id": "check-for-new-files",
+      "name": "Check for New Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 304]
+    },
+    {
+      "parameters": {
+        "filePath": "={{ $json.file_path }}"
+      },
+      "id": "read-input-file",
+      "name": "Read Binary Files",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [460, 304]
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\nimport json\nimport cv2\nimport numpy as np\nfrom io import BytesIO\nfrom PIL import Image\n\n# Get binary input from Read Binary Files node\ninput_data = _input.first()\nbinary_data = input_data.binary\n\n# Get the first file's data\nif binary_data and len(binary_data) > 0:\n    file_data = binary_data[0]\n    image_bytes = file_data.data\nelse:\n    # Fallback: try to get from JSON if base64 provided\n    check_image_base64 = input_data.json.get('check_image')\n    if check_image_base64:\n        if check_image_base64.startswith('data:image'):\n            check_image_base64 = check_image_base64.split(',')[1]\n        image_bytes = base64.b64decode(check_image_base64)\n    else:\n        raise ValueError(\"No image data provided\")\n\n# Decode image\nimage_array = np.frombuffer(image_bytes, dtype=np.uint8)\nimage = cv2.imdecode(image_array, cv2.IMREAD_COLOR)\n\n# Document detection - find check boundaries\ngray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)\nblurred = cv2.GaussianBlur(gray, (5, 5), 0)\nedges = cv2.Canny(blurred, 75, 200)\n\n# Find contours\ncontours, _ = cv2.findContours(edges.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\n\n# Find the largest rectangular contour (the check)\ncheck_contour = None\nmax_area = 0\n\nfor contour in contours:\n    area = cv2.contourArea(contour)\n    if area > max_area:\n        peri = cv2.arcLength(contour, True)\n        approx = cv2.approxPolyDP(contour, 0.02 * peri, True)\n        if len(approx) == 4:  # Rectangle\n            max_area = area\n            check_contour = approx\n\n# If no check found, use whole image\nif check_contour is not None:\n    # Get bounding rectangle\n    x, y, w, h = cv2.boundingRect(check_contour)\n    \n    # Crop to check\n    cropped = image[y:y+h, x:x+w]\n    \n    # Straighten if needed (perspective transform)\n    pts = check_contour.reshape(4, 2)\n    rect = np.zeros((4, 2), dtype=\"float32\")\n    \n    # Order points: top-left, top-right, bottom-right, bottom-left\n    s = pts.sum(axis=1)\n    rect[0] = pts[np.argmin(s)]\n    rect[2] = pts[np.argmax(s)]\n    \n    diff = np.diff(pts, axis=1)\n    rect[1] = pts[np.argmin(diff)]\n    rect[3] = pts[np.argmax(diff)]\n    \n    # Compute width and height\n    widthA = np.linalg.norm(rect[0] - rect[1])\n    widthB = np.linalg.norm(rect[2] - rect[3])\n    maxWidth = max(int(widthA), int(widthB))\n    \n    heightA = np.linalg.norm(rect[0] - rect[3])\n    heightB = np.linalg.norm(rect[1] - rect[2])\n    maxHeight = max(int(heightA), int(heightB))\n    \n    # Destination points\n    dst = np.array([\n        [0, 0],\n        [maxWidth - 1, 0],\n        [maxWidth - 1, maxHeight - 1],\n        [0, maxHeight - 1]\n    ], dtype=\"float32\")\n    \n    # Perspective transform\n    M = cv2.getPerspectiveTransform(rect, dst)\n    normalized = cv2.warpPerspective(image, M, (maxWidth, maxHeight))\nelse:\n    normalized = image\n\n# Convert to PIL Image for output\npil_image = Image.fromarray(cv2.cvtColor(normalized, cv2.COLOR_BGR2RGB))\n\n# Convert to base64\nbuffered = BytesIO()\npil_image.save(buffered, format=\"PNG\")\nimg_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')\n\n# Return normalized image\nreturn [\n    {\n        \"json\": {\n            \"normalized_image\": f\"data:image/png;base64,{img_base64}\",\n            \"width\": normalized.shape[1],\n            \"height\": normalized.shape[0]\n        }\n    }\n]"
+      },
+      "id": "document-detection",
+      "name": "Document Detection & Normalization",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 304]
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\nimport json\nimport easyocr\nimport numpy as np\nfrom PIL import Image\nfrom io import BytesIO\n\n# Get normalized image\ninput_data = _input.all()\nimage_base64 = input_data[0].json.get('normalized_image')\n\nif image_base64.startswith('data:image'):\n    image_base64 = image_base64.split(',')[1]\n\n# Decode image\nimage_bytes = base64.b64decode(image_base64)\nimage = Image.open(BytesIO(image_bytes))\nimage_array = np.array(image)\n\n# Initialize EasyOCR reader\nreader = easyocr.Reader(['en'])\n\n# Get image dimensions\nimg_height, img_width = image_array.shape[:2]\n\n# Focus on upper-left corner (where company name typically is)\n# Crop to top 25% and left 50% of check\ncrop_height = int(img_height * 0.25)\ncrop_width = int(img_width * 0.5)\ncropped_area = image_array[0:crop_height, 0:crop_width]\n\n# Run OCR on cropped area\nresults = reader.readtext(cropped_area)\n\n# Extract company name (typically the first/largest text detected)\ncompany_name = \"\"\nmax_height = 0\ntext_position = None\n\nfor (bbox, text, confidence) in results:\n    # Calculate text height\n    text_height = bbox[2][1] - bbox[0][1]\n    \n    # Get the largest text (company name is usually biggest)\n    if text_height > max_height and confidence > 0.5:\n        max_height = text_height\n        company_name = text.strip()\n        # Store position info for rendering later\n        text_position = {\n            \"x\": int(bbox[0][0]),\n            \"y\": int(bbox[0][1]),\n            \"width\": int(bbox[2][0] - bbox[0][0]),\n            \"height\": int(text_height)\n        }\n\n# Calculate font size based on text height\nfont_size = int(max_height * 0.8) if max_height > 0 else 24\n\nreturn [\n    {\n        \"json\": {\n            \"company_name\": company_name,\n            \"font_size\": font_size,\n            \"text_position\": text_position,\n            \"image_width\": img_width,\n            \"image_height\": img_height\n        }\n    }\n]"
+      },
+      "id": "ocr-extract",
+      "name": "OCR - Extract Company Name",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 304]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "nano-banana-api",
+      "name": "Nano Banana - Remove Address",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 304],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "FHgeuFVnb4iNU2K3",
+          "name": "OpenRouter API - Nano Banana"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\nimport json\n\n# Get the response from Nano Banana\ninput_data = _input.all()\nresponse_body = input_data[0].json\n\n# Extract the base64 image from response\n# Response format: {\"choices\": [{\"message\": {\"images\": [{\"image_url\": {\"url\": \"data:image/png;base64,...\"}}]}}]}\ntry:\n    cleaned_image_url = response_body['choices'][0]['message']['images'][0]['image_url']['url']\n    \n    # Extract just the base64 part\n    if cleaned_image_url.startswith('data:image'):\n        cleaned_image_base64 = cleaned_image_url.split(',')[1]\n    else:\n        cleaned_image_base64 = cleaned_image_url\n    \n    return [\n        {\n            \"json\": {\n                \"cleaned_image\": cleaned_image_url,\n                \"cleaned_image_base64\": cleaned_image_base64,\n                \"status\": \"success\"\n            }\n        }\n    ]\nexcept (KeyError, IndexError) as e:\n    return [\n        {\n            \"json\": {\n                \"error\": f\"Failed to extract image from Nano Banana response: {str(e)}\",\n                \"raw_response\": response_body,\n                \"status\": \"error\"\n            }\n        }\n    ]"
+      },
+      "id": "extract-cleaned-image",
+      "name": "Extract Cleaned Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 304]
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\nimport json\nfrom PIL import Image, ImageDraw, ImageFont\nfrom io import BytesIO\nimport numpy as np\n\n# Get input data\ninput_data = _input.all()\nfile_path_data = _('Check for New Files').first().json\n\n# Get cleaned image from previous node\ncleaned_image_b64 = input_data[0].json.get('cleaned_image_base64')\n\n# Get company name and font info from OCR node\nocr_data = _('OCR - Extract Company Name').first().json\ncompany_name = ocr_data.get('company_name', '')\nfont_size = ocr_data.get('font_size', 24)\ntext_position = ocr_data.get('text_position', {})\n\n# Get new address from file path (extract from filename or use defaults)\n# For now, using hardcoded address - can be parameterized later\naddress_line2 = '123 Main Street'\naddress_line3 = 'San Francisco, CA 94102'\naddress_line4 = 'USA'\n\n# Decode cleaned image\nif cleaned_image_b64.startswith('data:image'):\n    cleaned_image_b64 = cleaned_image_b64.split(',')[1]\n\nimage_bytes = base64.b64decode(cleaned_image_b64)\nimage = Image.open(BytesIO(image_bytes))\n\n# Create drawing context\ndraw = ImageDraw.Draw(image)\n\n# Load Arial Regular font\ntry:\n    font_path = '{{CATALYST_ROOT}}/tools/document-editor/fonts/check-address-font.ttf'\n    company_font = ImageFont.truetype(font_path, font_size)\n    address_font = ImageFont.truetype(font_path, int(font_size * 0.75))  # Slightly smaller for address\nexcept:\n    # Fallback to default font\n    company_font = ImageFont.load_default()\n    address_font = ImageFont.load_default()\n\n# Get starting position from OCR (where company name was)\nstart_x = text_position.get('x', 50)\nstart_y = text_position.get('y', 50)\n\n# Render company name (preserve original)\nif company_name:\n    draw.text((start_x, start_y), company_name, fill='black', font=company_font)\n\n# Calculate line spacing\nline_spacing = int(font_size * 1.2)\n\n# Render address lines below company name\ncurrent_y = start_y + line_spacing\n\nif address_line2:\n    draw.text((start_x, current_y), address_line2, fill='black', font=address_font)\n    current_y += int(line_spacing * 0.9)\n\nif address_line3:\n    draw.text((start_x, current_y), address_line3, fill='black', font=address_font)\n    current_y += int(line_spacing * 0.9)\n\nif address_line4:\n    draw.text((start_x, current_y), address_line4, fill='black', font=address_font)\n\n# Convert to base64 for output\nbuffered = BytesIO()\nimage.save(buffered, format=\"PNG\")\nfinal_image_b64 = base64.b64encode(buffered.getvalue()).decode('utf-8')\n\nreturn [\n    {\n        \"json\": {\n            \"final_check_image\": f\"data:image/png;base64,{final_image_b64}\",\n            \"final_check_image_base64\": final_image_b64,\n            \"company_name\": company_name,\n            \"address_rendered\": {\n                \"line2\": address_line2,\n                \"line3\": address_line3,\n                \"line4\": address_line4\n            },\n            \"file_path\": file_path_data.get('file_path'),\n            \"status\": \"complete\"\n        }\n    }\n]"
+      },
+      "id": "render-text",
+      "name": "Render Company Name + New Address",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 304]
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\n\n# Get the final check image base64\ninput_data = _input.first()\nfinal_image_b64 = input_data.json.get('final_check_image_base64')\n\n# Decode base64 to binary\nimage_binary = base64.b64decode(final_image_b64)\n\n# Return as binary data for Write Binary File node\nreturn [\n    {\n        \"binary\": {\n            \"data\": {\n                \"data\": image_binary,\n                \"mimeType\": \"image/png\",\n                \"fileName\": \"check-output.png\"\n            }\n        },\n        \"json\": input_data.json\n    }\n]"
+      },
+      "id": "convert-to-binary",
+      "name": "Convert Base64 to Binary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1780, 304]
+    },
+    {
+      "parameters": {
+        "fileName": "={{ $json.file_path.replace('/input/', '/output/') }}",
+        "dataPropertyName": "data"
+      },
+      "id": "write-output-file",
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [2000, 304]
+    }
+  ],
+  "connections": {
+    "Schedule - Every 30 seconds": {
+      "main": [
+        [
+          {
+            "node": "Check for New Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for New Files": {
+      "main": [
+        [
+          {
+            "node": "Read Binary Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Binary Files": {
+      "main": [
+        [
+          {
+            "node": "Document Detection & Normalization",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Document Detection & Normalization": {
+      "main": [
+        [
+          {
+            "node": "OCR - Extract Company Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OCR - Extract Company Name": {
+      "main": [
+        [
+          {
+            "node": "Nano Banana - Remove Address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nano Banana - Remove Address": {
+      "main": [
+        [
+          {
+            "node": "Extract Cleaned Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Cleaned Image": {
+      "main": [
+        [
+          {
+            "node": "Render Company Name + New Address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Render Company Name + New Address": {
+      "main": [
+        [
+          {
+            "node": "Convert Base64 to Binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Base64 to Binary": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

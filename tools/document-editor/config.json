@@ -1,0 +1,8 @@
+{
+  "validation_tolerance": 0.05,
+  "openrouter_model": "google/gemini-2.5-flash-image",
+  "openrouter_endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "max_image_size": 4096,
+  "font_color": [0, 0, 0],
+  "debug": false
+}

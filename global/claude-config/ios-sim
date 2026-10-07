@@ -1,0 +1,162 @@
+#!/bin/bash
+
+# Enhanced iOS Simulator Control for Claude Code
+# Handles the available iOS 18.6 simulators
+
+# Default device UUID for iPhone 16 Pro
+DEFAULT_DEVICE="37B59D52-E24F-4AFC-98AB-97DB859FFD97"
+
+get_device_uuid() {
+    local device_name="$1"
+    if [ -z "$device_name" ]; then
+        echo "$DEFAULT_DEVICE"
+        return
+    fi
+    
+    # Try to find device by name
+    uuid=$(xcrun simctl list devices | grep "iOS 18.6" -A 20 | grep "$device_name" | grep -o '([A-F0-9-]\{36\})' | tr -d '()')
+    if [ -n "$uuid" ]; then
+        echo "$uuid"
+    else
+        echo "$DEFAULT_DEVICE"
+    fi
+}
+
+case "$1" in
+    "list")
+        echo "Available iOS 18.6 Simulators:"
+        echo "  iPhone 16 Pro (default)"
+        echo "  iPhone 16 Pro Max"
+        echo "  iPhone 16e"
+        echo "  iPhone 16"
+        echo "  iPhone 16 Plus"
+        echo "  iPad Pro 11-inch (M4)"
+        echo "  iPad Pro 13-inch (M4)"
+        echo "  iPad mini (A17 Pro)"
+        echo "  iPad (A16)"
+        echo "  iPad Air 13-inch (M3)"
+        echo "  iPad Air 11-inch (M3)"
+        ;;
+    
+    "start"|"boot")
+        device_uuid=$(get_device_uuid "$2")
+        device_name=${2:-"iPhone 16 Pro"}
+        echo "Starting $device_name..."
+        xcrun simctl boot "$device_uuid" 2>/dev/null
+        open -a Simulator
+        echo "Simulator started!"
+        ;;
+    
+    "stop"|"shutdown")
+        if [ "$2" = "all" ]; then
+            echo "Shutting down all simulators..."
+            xcrun simctl shutdown all
+        else
+            device_uuid=$(get_device_uuid "$2")
+            device_name=${2:-"iPhone 16 Pro"}
+            echo "Shutting down $device_name..."
+            xcrun simctl shutdown "$device_uuid"
+        fi
+        ;;
+    
+    "screenshot"|"snap")
+        filename=${2:-"ios_sim_$(date +%Y%m%d_%H%M%S).png"}
+        echo "Taking screenshot: $filename"
+        xcrun simctl io booted screenshot "$filename"
+        echo "Screenshot saved: $filename"
+        ;;
+    
+    "record")
+        filename=${2:-"ios_sim_$(date +%Y%m%d_%H%M%S).mp4"}
+        echo "Recording video: $filename"
+        echo "Press Ctrl+C to stop recording"
+        xcrun simctl io booted recordVideo "$filename"
+        ;;
+    
+    "url"|"open")
+        if [ -z "$2" ]; then
+            echo "Usage: ios-sim url <url>"
+            exit 1
+        fi
+        echo "Opening URL in Safari: $2"
+        xcrun simctl openurl booted "$2"
+        ;;
+    
+    "install")
+        if [ -z "$2" ]; then
+            echo "Usage: ios-sim install <path-to-app>"
+            exit 1
+        fi
+        echo "Installing app: $2"
+        xcrun simctl install booted "$2"
+        ;;
+    
+    "launch")
+        if [ -z "$2" ]; then
+            echo "Usage: ios-sim launch <bundle-id>"
+            exit 1
+        fi
+        echo "Launching app: $2"
+        xcrun simctl launch booted "$2"
+        ;;
+    
+    "status")
+        echo "Running Simulators:"
+        xcrun simctl list devices | grep "Booted" || echo "No simulators currently running"
+        ;;
+    
+    "logs")
+        echo "Streaming simulator logs (Ctrl+C to stop)..."
+        xcrun simctl spawn booted log stream --level debug
+        ;;
+    
+    "reset")
+        device_uuid=$(get_device_uuid "$2")
+        device_name=${2:-"iPhone 16 Pro"}
+        echo "Resetting $device_name..."
+        xcrun simctl erase "$device_uuid"
+        echo "Reset complete!"
+        ;;
+    
+    "safari")
+        echo "Opening Safari..."
+        xcrun simctl launch booted com.apple.mobilesafari
+        ;;
+    
+    "settings")
+        echo "Opening Settings..."
+        xcrun simctl launch booted com.apple.Preferences
+        ;;
+    
+    *)
+        echo "iOS Simulator Control for Claude Code"
+        echo ""
+        echo "Usage: ios-sim <command> [options]"
+        echo ""
+        echo "Quick Commands:"
+        echo "  start [device]         - Start simulator (default: iPhone 16 Pro)"
+        echo "  stop [device|all]      - Stop simulator(s)"
+        echo "  screenshot [filename]  - Take screenshot"
+        echo "  url <url>             - Open URL in Safari"
+        echo "  status                - Show running simulators"
+        echo ""
+        echo "App Commands:"
+        echo "  install <app-path>    - Install app"
+        echo "  launch <bundle-id>    - Launch app"
+        echo "  safari                - Open Safari"
+        echo "  settings              - Open Settings"
+        echo ""
+        echo "Advanced:"
+        echo "  list                  - List available devices"
+        echo "  record [filename]     - Record video"
+        echo "  logs                  - Stream logs"
+        echo "  reset [device]        - Reset simulator"
+        echo ""
+        echo "Examples:"
+        echo "  ios-sim start"
+        echo "  ios-sim start 'iPhone 16 Pro Max'"
+        echo "  ios-sim screenshot"
+        echo "  ios-sim url 'https://apple.com'"
+        echo "  ios-sim safari"
+        ;;
+esac

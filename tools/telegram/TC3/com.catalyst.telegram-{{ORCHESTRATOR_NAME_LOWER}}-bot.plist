@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Service Label -->
+	<key>Label</key>
+	<string>com.catalyst.telegram-{{ORCHESTRATOR_NAME_LOWER}}-bot</string>
+
+	<!-- Program and Arguments -->
+	<!-- Uses start.sh wrapper to load secrets from macOS Keychain -->
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>{{CATALYST_ROOT}}/tools/telegram/TC3/start.sh</string>
+	</array>
+
+	<!-- Working Directory -->
+	<key>WorkingDirectory</key>
+	<string>{{CATALYST_ROOT}}/tools/telegram/TC3</string>
+
+	<!-- Environment Variables -->
+	<!-- NOTE: LaunchAgents don't inherit shell environment -->
+	<!-- These are loaded from .env file by the bot -->
+	<key>EnvironmentVariables</key>
+	<dict>
+		<!-- PATH must include all necessary binaries -->
+		<key>PATH</key>
+		<string>{{HOME_DIR}}/.local/bin:{{HOME_DIR}}/.bun/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+
+		<!-- HOME directory (for .env file access) -->
+		<key>HOME</key>
+		<string>{{HOME_DIR}}</string>
+
+		<!-- User for launchctl operations -->
+		<key>USER</key>
+		<string>{{USER_NAME}}</string>
+	</dict>
+
+	<!-- Logging -->
+	<key>StandardOutPath</key>
+	<string>{{CATALYST_ROOT}}/tools/telegram/TC3/logs/stdout.log</string>
+
+	<key>StandardErrorPath</key>
+	<string>{{CATALYST_ROOT}}/tools/telegram/TC3/logs/stderr.log</string>
+
+	<!-- Run at Load (start on boot) -->
+	<key>RunAtLoad</key>
+	<true/>
+
+	<!-- Keep Alive Configuration -->
+	<key>KeepAlive</key>
+	<dict>
+		<!-- Only restart on crashes (exit code != 0) -->
+		<!-- Don't restart if bot exits cleanly (exit code 0) -->
+		<key>SuccessfulExit</key>
+		<false/>
+	</dict>
+
+	<!-- Throttle Restarts -->
+	<!-- Prevent restart loops by limiting restart frequency -->
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+
+	<!-- Process Type -->
+	<!-- Background service (not interactive) -->
+	<key>ProcessType</key>
+	<string>Background</string>
+
+	<!-- Nice Level -->
+	<!-- Lower priority (10) to not interfere with interactive apps -->
+	<key>Nice</key>
+	<integer>10</integer>
+
+	<!-- Soft Resource Limits -->
+	<key>SoftResourceLimits</key>
+	<dict>
+		<!-- Max number of open files -->
+		<key>NumberOfFiles</key>
+		<integer>1024</integer>
+	</dict>
+
+	<!-- Exit Timeout -->
+	<!-- How long to wait for clean shutdown before SIGKILL -->
+	<key>ExitTimeOut</key>
+	<integer>10</integer>
+</dict>
+</plist>
