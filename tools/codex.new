@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Wrapper that auto-loads Builder context when launched from within
+# the Catalyst root (or $BUILDER_ROOT). Falls back to real codex otherwise.
+
+# Resolve real codex binary (not this wrapper)
+SELF_PATH="$(python3 - <<'PY'
+import os,sys
+print(os.path.realpath(sys.argv[1]))
+PY
+"$0")"
+
+REAL_CODEX=""
+while IFS= read -r line; do
+  path=$(python3 - <<'PY'
+import os,sys
+print(os.path.realpath(sys.argv[1]))
+PY
+"$line")
+  if [[ "$path" != "$SELF_PATH" ]]; then
+    REAL_CODEX="$line"
+    break
+  fi
+done < <(which -a codex)
+
+if [[ -z "$REAL_CODEX" ]]; then
+  echo "ERROR: Could not locate the real 'codex' binary in PATH." >&2
+  exit 1
+fi
+
+# Determine Builder root and if we're inside it
+DEFAULT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT_DIR="${BUILDER_ROOT:-$DEFAULT_ROOT}"
+
+inside_builder=false
+case "${PWD%/}/" in
+  "${ROOT_DIR%/}/"* ) inside_builder=true ;;
+  * ) inside_builder=false ;;
+esac
+
+# Bypass injection for explicit version/help anywhere
+for a in "$@"; do
+  case "$a" in
+    -V|--version|-h|--help)
+      exec "$REAL_CODEX" "$@"
+      ;;
+  esac
+done
+
+# If inside Builder, decide how to inject
+if $inside_builder; then
+  # Split options from first non-option argument
+  args=("$@")
+  i=0
+  while [[ $i -lt ${#args[@]} ]]; do
+    a="${args[$i]}"
+    if [[ "$a" == "--" ]]; then ((i++)); break; fi
+    if [[ "$a" == -* ]]; then ((i++)); continue; fi
+    break
+  done
+
+  first_nonopt="${args[$i]:-}"
+
+  # Known subcommands: pass through unchanged
+  case "$first_nonopt" in
+    exec|e|proto|p|mcp|apply|a|login|logout|completion|debug|help)
+      exec "$REAL_CODEX" "$@"
+      ;;
+  esac
+
+  prompt() {
+    echo "Builder System unified context. You are Codex working in $PWD."
+    echo
+    if [[ -f "$ROOT_DIR/PROJECT_COMPASS_Builder_System.md" ]]; then
+      echo "## Project Compass (Authoritative)"
+      cat "$ROOT_DIR/PROJECT_COMPASS_Builder_System.md"
+      echo
+      echo "---"
+    fi
+    if [[ -f "$ROOT_DIR/CLAUDE.md" ]]; then
+      echo
+      echo "## Claude Code System Context"
+      cat "$ROOT_DIR/CLAUDE.md"
+      echo
+      echo "---"
+    fi
+  }
+  PROMPT_CONTENT="$(prompt)"
+
+  # If no user prompt provided (interactive), just inject context
+  if [[ -z "$first_nonopt" ]]; then
+    exec "$REAL_CODEX" "$PROMPT_CONTENT"
+  fi
+
+  # Otherwise, prepend context to the user's prompt (join remaining tokens)
+  USER_PROMPT=""
+  for ((j=i; j<${#args[@]}; j++)); do
+    USER_PROMPT+="${args[$j]} "
+  done
+  USER_PROMPT="${USER_PROMPT% }"
+  COMBINED_PROMPT="$PROMPT_CONTENT
+
+User request:
+$USER_PROMPT"
+
+  # Preserve options before the prompt
+  if [[ $i -gt 0 ]]; then
+    exec "$REAL_CODEX" "${args[@]:0:$i}" "$COMBINED_PROMPT"
+  else
+    exec "$REAL_CODEX" "$COMBINED_PROMPT"
+  fi
+fi
+
+# Otherwise, pass through unchanged
+exec "$REAL_CODEX" "$@"

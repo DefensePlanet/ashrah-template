@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "description": "Project-level MCP configuration for Builder system",
+  "extends": "./server-registry.json",
+  "mcpServers": {
+    "bridge-mcp": {
+      "command": "{{CATALYST_ROOT}}/tools/bridge-mcp/start.sh",
+      "args": [],
+      "env": {}
+    },
+    "shadcn-ui": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@jpisnice/shadcn-ui-mcp-server"],
+      "env": {}
+    },
+    "n8n-mcp": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["{{CATALYST_ROOT}}/global/n8n-mcp/src/web/site/n8n-mcp/dist/mcp/index.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "github-builder": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_MCP_PAT}"
+      }
+    },
+    "git-mcp": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://gitmcp.io/idosal/git-mcp"],
+      "env": {}
+    }
+  },
+  "roles_access": {
+    "planner": {
+      "allowedServers": ["github-builder"],
+      "mode": "read"
+    },
+    "reviewer": {
+      "allowedServers": ["github-builder"],
+      "mode": "read"
+    },
+    "system-architect": {
+      "allowedServers": ["git-mcp"],
+      "mode": "read"
+    },
+    "frontend-specialist": {
+      "allowedServers": ["git-mcp", "shadcn-ui"],
+      "mode": "read"
+    },
+    "automation-specialist": {
+      "allowedServers": ["n8n-mcp"],
+      "mode": "read"
+    },
+    "executor": {
+      "allowedServers": [],
+      "mode": "none",
+      "overrides": {
+        "github-builder": "write",
+        "bridge-mcp": "write"
+      }
+    }
+  },
+  "security": {
+    "github-builder": {
+      "rateLimits": {
+        "requestsPerHour": 1000,
+        "requestsPerMinute": 60
+      },
+      "auditLog": true
+    },
+    "defaultMode": "read",
+    "requiresAuth": ["github-builder"]
+  }
+}

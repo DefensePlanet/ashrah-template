@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ORCHESTRATOR_NAME}} Voice Indicator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body, #root {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0a0e1a;
+      }
+
+      body {
+        font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        color: #fff;
+      }
+
+      /* Retro crypto punk pulse rings animation */
+      @keyframes pulse-ring {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.8);
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse-ring-slow {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.4;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(2.2);
+          opacity: 0;
+        }
+      }
+
+      @keyframes glow-pulse {
+        0%, 100% {
+          filter: drop-shadow(0 0 20px var(--glow-color)) drop-shadow(0 0 40px var(--glow-color));
+        }
+        50% {
+          filter: drop-shadow(0 0 30px var(--glow-color)) drop-shadow(0 0 60px var(--glow-color));
+        }
+      }
+
+      @keyframes scanline {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

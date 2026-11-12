@@ -1,0 +1,67 @@
+sources:
+  jpr:
+    enabled: true
+    path: "~/Library/Mobile Documents/iCloud~com~openplanetsoftware~just-press-record/Documents/"
+    is_icloud: true
+  voice_memos:
+    enabled: true
+    path: "~/Library/Group Containers/group.com.apple.VoiceMemos.shared/Recordings/"
+    is_icloud: false
+
+watcher:
+  poll_interval_secs: 30
+  cutoff_date: "2026-02-19T00:00:00"
+
+denoiser:
+  ffmpeg_highpass_hz: 80
+  ffmpeg_lowpass_hz: 8000
+  ffmpeg_afftdn_noise_floor: -25
+  noisereduce_stationary: false
+  noisereduce_prop_decrease: 0.75
+  output_dir: "~/.cache/catalyst-voice-pipeline/denoised/"
+
+transcriber:
+  engine: "mlx-whisper"
+  model: "distil-large-v3-4bit"
+  language: "en"
+
+categorizer:
+  ambient_max_duration: 3.0
+  backend: "ollama"
+  model: "llama3.2:3b"
+  confidence_threshold: 0.7
+  categories:
+    prayer:
+      description: "Direct communication with God -- gratitude, requests, confession, praise, intercession"
+      keywords: ["God", "Lord", "Jesus", "Father", "pray", "thank you God", "amen", "bless", "heavenly", "grace", "mercy", "forgive"]
+    daily-log:
+      description: "Personal reflections, daily updates, thoughts, planning, stream of consciousness"
+      keywords: ["today", "thinking about", "need to", "going to", "feeling", "remember", "idea"]
+    meditation:
+      description: "Guided or silent meditation, breathing exercises, centering practices"
+      keywords: ["breathe", "focus", "mindful", "presence", "center"]
+    ambient:
+      description: "Accidental recordings, background noise, unintelligible audio"
+      keywords: []
+
+output:
+  base_path: "~/Library/Mobile Documents/com~apple~CloudDocs/Voice Archive/"
+  structure:
+    prayer: "prayers/"
+    daily-log: "daily/"
+    meditation: "meditation/"
+    ambient: "ambient/"
+    uncategorized: "uncategorized/"
+  finder_tag: true
+  finder_tag_name: "Voice-Processed"
+  finder_tag_color: 6
+
+database:
+  path: "~/.cache/catalyst-voice-pipeline/voice-pipeline.db"
+
+logging:
+  path: "~/.cache/catalyst-voice-pipeline/voice-pipeline.log"
+  level: "INFO"
+
+retry:
+  max_retries: 3

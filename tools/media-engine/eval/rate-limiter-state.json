@@ -1,0 +1,15 @@
+{
+  "saved_at": 1771562642.4395819,
+  "providers": {
+    "openrouter": {
+      "count": 3,
+      "reset_at": 1771570800.016445,
+      "limit": 500
+    },
+    "gemini": {
+      "count": 8,
+      "reset_at": 1771570800.9022982,
+      "limit": 200
+    }
+  }
+}

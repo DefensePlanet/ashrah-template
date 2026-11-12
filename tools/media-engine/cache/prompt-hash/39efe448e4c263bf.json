@@ -1,0 +1,49 @@
+{
+  "cache_key": "39efe448e4c263bf",
+  "prompt": "Hero walking through forest",
+  "model": "veo-3.1-fast-generate-preview",
+  "media_type": "video",
+  "resolution": "1080p",
+  "output_path": "{{CATALYST_ROOT}}/generated-media/2026-02-08/video/video_d1f2c7b5.mp4",
+  "created_at": 1770586809.52287,
+  "config_subset": {
+    "model": "veo-3.1-fast-generate-preview",
+    "media_type": "video",
+    "auth": "gemini_direct",
+    "auth_provider": "gemini",
+    "generation": {
+      "resolution": "1080p",
+      "aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "duration": "8s",
+      "fps": 24,
+      "camera_motion": "slow_dolly",
+      "audio": "none"
+    },
+    "refinement": {
+      "mode": "agent_in_loop",
+      "max_iterations": 3,
+      "quality_threshold": 0.8,
+      "regression_cutoff": true,
+      "evaluate_criteria": [
+        "motion_consistency",
+        "brand_alignment",
+        "scene_coherence"
+      ],
+      "hard_checks": [
+        "file_exists",
+        "file_not_empty",
+        "not_corrupted"
+      ]
+    },
+    "consistency": {
+      "reference_images": 3,
+      "style_weight": 0.8,
+      "character_lock": false
+    }
+  },
+  "references": [],
+  "source_image": ""
+}

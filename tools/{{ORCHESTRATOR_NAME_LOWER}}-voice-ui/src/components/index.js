@@ -1,0 +1,5 @@
+export { default as {{ORCHESTRATOR_NAME}}Orb } from './{{ORCHESTRATOR_NAME}}Orb'
+export { default as ReactBitsOrb } from './ReactBitsOrb'
+export { default as PulseRings } from './PulseRings'
+export { default as Controls } from './Controls'
+export { default as AudioProcessor } from './AudioProcessor'

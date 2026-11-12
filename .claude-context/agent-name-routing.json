@@ -1,0 +1,194 @@
+{
+  "agent_name_aliases": {
+    "backend developer": "🏛️ Backend Developer",
+    "backend dev": "🏛️ Backend Developer",
+    "backend specialist": "🏛️ Backend Developer",
+    "backend": "🏛️ Backend Developer",
+
+    "frontend developer": "🖥️ Frontend Developer",
+    "frontend dev": "🖥️ Frontend Developer",
+    "frontend specialist": "🖥️ Frontend Developer",
+    "frontend": "🖥️ Frontend Developer",
+
+    "mobile developer": "📱 Mobile Developer",
+    "mobile dev": "📱 Mobile Developer",
+    "ios dev": "📱 Mobile Developer",
+    "ios developer": "📱 Mobile Developer",
+    "mobile": "📱 Mobile Developer",
+
+    "ui designer": "📐 UI Designer",
+    "ui/ux designer": "📐 UI Designer",
+    "ux designer": "📐 UI Designer",
+    "ui": "📐 UI Designer",
+    "ui design": "📐 UI Designer",
+
+    "graphic designer": "🎨 Graphic Designer",
+    "brand designer": "🎨 Graphic Designer",
+
+    "macos dev": "💻 macOS Dev",
+    "macos developer": "💻 macOS Dev",
+    "macos specialist": "💻 macOS Dev",
+    "macos": "💻 macOS Dev",
+    "mac": "💻 macOS Dev",
+
+    "shopify exec": "🛒 Shopify Exec",
+    "shopify specialist": "🛒 Shopify Exec",
+    "shopify developer": "🛒 Shopify Exec",
+    "shopify": "🛒 Shopify Exec",
+
+    "automator": "🤖 Automator",
+    "automation specialist": "🤖 Automator",
+
+    "bowser": "🐲 Bowser",
+    "browser automation": "🐲 Bowser",
+    "browser": "🐲 Bowser",
+
+    "research agent": "🔍 Research Agent",
+    "researcher": "🔍 Research Agent",
+    "research": "🔍 Research Agent",
+
+    "boss": "👔 BOSS",
+
+    "system architect": "🏗️ System Architect",
+    "architect": "🏗️ System Architect",
+
+    "security analyst": "🛡️ Security Analyst",
+    "security auditor": "🛡️ Security Analyst",
+    "security": "🛡️ Security Analyst",
+
+    "business analyst": "📊 Business Analyst",
+
+    "content marketer": "📣 Chief Marketing Officer",
+    "content writer": "📣 Chief Marketing Officer",
+    "marketing analyst": "📣 Chief Marketing Officer",
+    "marketing attribution analyst": "📣 Chief Marketing Officer",
+    "social media marketer": "📣 Chief Marketing Officer",
+    "cmo": "📣 Chief Marketing Officer",
+    "chief marketing officer": "📣 Chief Marketing Officer",
+    "copywriter": "📣 Chief Marketing Officer",
+    "paid ads": "📣 Chief Marketing Officer",
+    "meta ads": "📣 Chief Marketing Officer",
+    "google ads": "📣 Chief Marketing Officer",
+    "marketing": "📣 Chief Marketing Officer",
+
+    "seo analyzer": "📈 SEO Analyzer",
+    "seo specialist": "📈 SEO Analyzer",
+    "seo": "📈 SEO Analyzer",
+
+    "product strategist": "🏆 Product Strategist",
+
+    "mcp server dude": "🏄🏼‍♂️ MCP Server Dude",
+    "mcp specialist": "🏄🏼‍♂️ MCP Server Dude",
+
+    "blockchain agent": "⛓️ Blockchain Agent",
+    "web3 specialist": "⛓️ Blockchain Agent",
+
+    "2nd brain wizard": "🧠 2nd Brain Wizard",
+    "second brain wizard": "🧠 2nd Brain Wizard",
+    "pkm specialist": "🧠 2nd Brain Wizard",
+
+    "brand specialist": "🎯 Brand Specialist",
+    "brand review": "🎯 Brand Specialist",
+    "brand audit": "🎯 Brand Specialist",
+    "branding": "🎯 Brand Specialist",
+    "brand guardian": "🎯 Brand Specialist",
+    "brand": "🎯 Brand Specialist",
+
+    "ai nerd": "🤓 AI Nerd",
+    "nerd": "🤓 AI Nerd",
+    "ai config specialist": "🤓 AI Nerd",
+    "gateway specialist": "🤓 AI Nerd",
+    "model router specialist": "🤓 AI Nerd",
+
+    "camera man": "📸 Camera Man",
+    "visual media generator": "📸 Camera Man",
+    "visual media": "📸 Camera Man",
+    "media gen": "📸 Camera Man",
+    "media generator": "📸 Camera Man",
+    "video generator": "📸 Camera Man",
+    "image generator": "📸 Camera Man",
+    "camera": "📸 Camera Man",
+    "photo": "📸 Camera Man",
+
+    "code reviewer": "🧐 Code Reviewer",
+    "code review agent": "🧐 Code Reviewer",
+    "reviewer": "🧐 Code Reviewer",
+
+    "debugger": "👾 Debugger",
+    "debug agent": "👾 Debugger",
+
+    "validator": "🧪 Validator",
+    "testing agent": "🧪 Validator",
+    "testing": "🧪 Validator",
+    "test runner": "🧪 Validator",
+    "test agent": "🧪 Validator",
+    "qa agent": "🧪 Validator",
+    "quality assurance": "🧪 Validator",
+    "tester": "🧪 Validator",
+
+    "venture analyst": "🧭 Venture Analyst",
+    "idea validator": "🧭 Venture Analyst",
+    "market researcher": "🧭 Venture Analyst",
+    "validation specialist": "🧭 Venture Analyst",
+
+    "studio engineer": "🎬 Studio Engineer",
+    "obs specialist": "🎬 Studio Engineer",
+    "production engineer": "🎬 Studio Engineer",
+    "a/v engineer": "🎬 Studio Engineer",
+
+    "3d developer": "🧊 3D Developer",
+    "3d dev": "🧊 3D Developer",
+    "blender specialist": "🧊 3D Developer",
+    "3d artist": "🧊 3D Developer",
+    "3d modeler": "🧊 3D Developer",
+
+    "algorithm wizard": "🧮 Algo Wizard",
+    "algo wizard": "🧮 Algo Wizard",
+    "algorithm wiz": "🧮 Algo Wizard",
+    "algo wiz": "🧮 Algo Wizard",
+    "algorithm engineer": "🧮 Algo Wizard",
+    "algorithm specialist": "🧮 Algo Wizard",
+    "algo": "🧮 Algo Wizard",
+    "algorithm": "🧮 Algo Wizard",
+    "dsa": "🧮 Algo Wizard",
+    "competitive programming": "🧮 Algo Wizard",
+    "cp specialist": "🧮 Algo Wizard",
+
+    "sourcerer": "🛍️ Sourcerer",
+    "product sourcing": "🛍️ Sourcerer",
+    "product sourcing agent": "🛍️ Sourcerer",
+    "sourcing agent": "🛍️ Sourcerer",
+    "sourcing": "🛍️ Sourcerer",
+    "supplier search": "🛍️ Sourcerer",
+    "alibaba": "🛍️ Sourcerer",
+    "1688": "🛍️ Sourcerer",
+    "oem sourcing": "🛍️ Sourcerer",
+
+    "ecomm bro": "🛒 Ecomm Bro",
+    "ecomm": "🛒 Ecomm Bro",
+    "e-commerce": "🛒 Ecomm Bro",
+    "ecommerce": "🛒 Ecomm Bro",
+    "ecommerce specialist": "🛒 Ecomm Bro",
+    "storefront specialist": "🛒 Ecomm Bro",
+
+    "formulator": "⚗️ Formulator",
+    "formulation specialist": "⚗️ Formulator",
+    "formulation scientist": "⚗️ Formulator",
+
+    "game developer": "🎮 Game Developer",
+    "game dev": "🎮 Game Developer",
+    "gamedev": "🎮 Game Developer",
+    "game engine developer": "🎮 Game Developer",
+
+    "reverse engineer": "🔬 Reverse Engineer",
+    "re": "🔬 Reverse Engineer",
+    "reverse engineering": "🔬 Reverse Engineer",
+    "binary analyst": "🔬 Reverse Engineer",
+
+    "youtube strategist": "📺 YouTube Strategist",
+    "youtube growth": "📺 YouTube Strategist",
+    "youtube growth strategist": "📺 YouTube Strategist",
+    "yt strategist": "📺 YouTube Strategist"
+  },
+  "routing_instructions": "Before calling the Task tool, check if the agent name needs to be resolved. Use this mapping to convert friendly/shorthand names (like 'Backend Dev') to the exact registered names with emojis (like '🏛️ Backend Developer'). All keys are lowercase — perform case-insensitive lookup by lowering the input before matching."
+}

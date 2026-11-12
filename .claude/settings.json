@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "allow": []
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_DIR}}/.kokoro-tts-venv/bin/python3.12 {{CATALYST_ROOT}}/tools/codex-tts/tts_hook_client.py"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 {{CATALYST_ROOT}}/.claude/hooks/codex_peer_review.py",
+            "timeout": 200
+          }
+        ]
+      }
+    ]
+  }
+}

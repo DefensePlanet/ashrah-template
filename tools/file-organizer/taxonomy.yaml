@@ -1,0 +1,300 @@
+# Custom Taxonomy for {{USER_NAME}}'s File Organizer
+# Each category has:
+#   label:            Display name (used in Finder tags)
+#   color:            Finder color (red=1, green=2, yellow=3, blue=4, orange=5, purple=6, gray=7, none=0)
+#   path_patterns:    Substrings matched against the full file path (case-insensitive)
+#   content_keywords: Phrases searched inside file text/PDF content (case-insensitive)
+#   description:      Helps the AI fallback understand this category
+#   priority:         Higher = checked first (resolves ties)
+
+categories:
+
+  # ── Business Projects ──────────────────────────────────────
+
+  example-team-tags:
+    label: "Big Sky Tags"
+    color: 4  # blue
+    priority: 90
+    path_patterns:
+      - "big sky"
+      - "big_sky"
+      - "exampleteam"
+      - "bst"
+      - "exampleteamtagsholdings"
+    content_keywords:
+      - "big sky tags"
+      - "big sky holdings"
+      - "exampleteamtagsholdings"
+      - "big sky team"
+      - "livestock tag"
+      - "cattle tag"
+      - "ear tag"
+      - "ranch tag"
+    description: "Big Sky Tags — livestock tagging app/business, brand assets, app icons"
+
+  rawhide-organics:
+    label: "Rawhide Organics"
+    color: 5  # orange
+    priority: 90
+    path_patterns:
+      - "rawhide"
+      - "rawhide-organics"
+      - "rawhide_organics"
+    content_keywords:
+      - "rawhide organics"
+      - "tallow balm"
+      - "jackaroo"
+      - "gold rush"
+      - "beef tallow"
+      - "tallow skincare"
+      - "rawhide introductions"
+      - "rawhide skin"
+      - "western skincare"
+    description: "Rawhide Organics — tallow-based skincare brand, product photos, labels, packaging"
+
+  asset-labs:
+    label: "Asset Labs"
+    color: 3  # yellow
+    priority: 85
+    path_patterns:
+      - "asset-labs"
+      - "asset_labs"
+      - "assetlabs"
+    content_keywords:
+      - "asset labs"
+      - "assetlabs"
+    description: "Asset Labs — brand and business assets"
+
+  examplepartners:
+    label: "examplepartners"
+    color: 2  # green
+    priority: 85
+    path_patterns:
+      - "examplepartners"
+      - "example-partners"
+      - "mid_partners"
+      - "exampleco"
+      - "exampleco"
+      - "home hustle"
+    content_keywords:
+      - "examplepartners"
+      - "mid partners"
+      - "exampleco"
+      - "home hustle"
+      - "lead gen"
+      - "lead generation"
+      - "ibo portal"
+      - "ibo info"
+      - "independent business owner"
+    description: "examplepartners / exampleco — lead generation business, IBO portal, partner docs"
+
+  catalyst:
+    label: "Catalyst"
+    color: 6  # purple
+    priority: 70
+    path_patterns:
+      - "catalyst"
+      - "builderos"
+    content_keywords:
+      - "catalyst system"
+      - "{{ORCHESTRATOR_NAME_LOWER}}"
+      - "builderos"
+      - "capsule"
+      - "claude code"
+    description: "Catalyst — personal dev system, agents, tools, configs"
+
+  # ── Personal ───────────────────────────────────────────────
+
+  health-fitness:
+    label: "Health & Fitness"
+    color: 1  # red
+    priority: 80
+    path_patterns:
+      - "biomarker"
+      - "dexa"
+      - "health"
+      - "fitness"
+      - "workout"
+      - "supplement"
+    content_keywords:
+      - "dexa scan"
+      - "body composition"
+      - "biomarker"
+      - "lab result"
+      - "blood work"
+      - "bloodwork"
+      - "cholesterol"
+      - "testosterone"
+      - "hormone"
+      - "supplement"
+      - "adderall"
+      - "prescription"
+      - "pharmacy"
+      - "workout"
+      - "exercise"
+      - "nsdr"
+      - "non-sleep deep rest"
+      - "huberman"
+      - "meditation"
+      - "body fat"
+      - "lean mass"
+      - "bone density"
+    description: "Health & Fitness — medical records, lab results, DEXA scans, supplements, workouts, biohacking"
+
+  finance:
+    label: "Finance"
+    color: 1  # red
+    priority: 75
+    path_patterns:
+      - "finance"
+      - "invoice"
+      - "receipt"
+      - "tax"
+      - "bank"
+      - "budget"
+    content_keywords:
+      - "invoice"
+      - "receipt"
+      - "tax return"
+      - "w-2"
+      - "1099"
+      - "bank statement"
+      - "balance sheet"
+      - "profit and loss"
+      - "ein"
+      - "llc"
+      - "accounts payable"
+      - "accounts receivable"
+      - "payment"
+      - "stripe"
+      - "paypal"
+    description: "Finance — invoices, receipts, tax docs, bank statements, budgets, accounting"
+
+  faith-inspiration:
+    label: "Faith & Inspiration"
+    color: 4  # blue
+    priority: 65
+    path_patterns:
+      - "faith"
+      - "devotion"
+      - "prayer"
+      - "scripture"
+    content_keywords:
+      - "christ"
+      - "jesus"
+      - "lord"
+      - "god"
+      - "scripture"
+      - "prayer"
+      - "faith"
+      - "sermon"
+      - "devotional"
+      - "spiritual"
+      - "church"
+      - "gospel"
+      - "biblical"
+      - "proverb"
+      - "psalm"
+      - "generosity"
+      - "humility"
+      - "servant leadership"
+    description: "Faith & Inspiration — devotionals, leadership notes, spiritual quotes, Bible study"
+
+  personal:
+    label: "Personal"
+    color: 7  # gray
+    priority: 40
+    path_patterns:
+      - "personal"
+    content_keywords:
+      - "personal"
+      - "family"
+      - "vacation"
+      - "birthday"
+      - "wedding"
+      - "anniversary"
+    description: "Personal — family matters, personal documents, life admin"
+
+  # ── Work / General ─────────────────────────────────────────
+
+  design:
+    label: "Design"
+    color: 3  # yellow
+    priority: 30
+    path_patterns:
+      - "mockup"
+      - "wireframe"
+      - "figma"
+    content_keywords:
+      - "mockup"
+      - "wireframe"
+      - "design system"
+      - "style guide"
+      - "brand guide"
+      - "color palette"
+      - "typography"
+    description: "Design — mockups, logos, UI work not tied to a specific project"
+
+  development:
+    label: "Development"
+    color: 2  # green
+    priority: 25
+    path_patterns:
+      - "code"
+      - "github"
+      - "node_modules"
+    content_keywords:
+      - "function"
+      - "import"
+      - "const"
+      - "class"
+      - "def "
+      - "return"
+      - "api"
+      - "endpoint"
+      - "database"
+      - "migration"
+    description: "Development — source code, configs, scripts, technical docs"
+
+  reference:
+    label: "Reference"
+    color: 4  # blue
+    priority: 20
+    path_patterns:
+      - "reference"
+      - "tutorial"
+      - "cheat"
+    content_keywords:
+      - "tutorial"
+      - "how to"
+      - "guide"
+      - "cheat sheet"
+      - "reference"
+      - "documentation"
+    description: "Reference — articles, tutorials, cheat sheets, research"
+
+  media-entertainment:
+    label: "Media & Entertainment"
+    color: 5  # orange
+    priority: 15
+    path_patterns:
+      - "movie"
+      - "music"
+      - "podcast"
+      - "audiobook"
+    content_keywords:
+      - "movie"
+      - "episode"
+      - "season"
+      - "album"
+      - "soundtrack"
+      - "playlist"
+    description: "Media & Entertainment — movies, music, podcasts, personal downloads"
+
+  unsorted:
+    label: "Unsorted"
+    color: 0  # none
+    priority: 0
+    path_patterns: []
+    content_keywords: []
+    description: "Could not confidently categorize — needs manual review"

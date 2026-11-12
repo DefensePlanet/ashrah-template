@@ -1,0 +1,113 @@
+#!/bin/bash
+
+# iOS Simulator Control Script for Claude Code
+# Usage: sim <command> [options]
+
+case "$1" in
+    "list")
+        echo "Available iOS Simulators:"
+        xcrun simctl list devices iPhone --json | jq -r '.devices | to_entries[] | select(.key | contains("iOS")) | .key as $ios | .value[] | select(.availability == "available" or (.availability | not)) | "\($ios): \(.name) (\(.udid))"'
+        ;;
+    "boot")
+        if [ -z "$2" ]; then
+            echo "Starting iPhone 16 Pro (default)..."
+            xcrun simctl boot "iPhone 16 Pro"
+        else
+            echo "Starting $2..."
+            xcrun simctl boot "$2"
+        fi
+        open -a Simulator
+        ;;
+    "shutdown")
+        if [ -z "$2" ]; then
+            echo "Shutting down all simulators..."
+            xcrun simctl shutdown all
+        else
+            echo "Shutting down $2..."
+            xcrun simctl shutdown "$2"
+        fi
+        ;;
+    "install")
+        if [ -z "$2" ] || [ -z "$3" ]; then
+            echo "Usage: sim install <device> <app.app>"
+            exit 1
+        fi
+        echo "Installing $3 on $2..."
+        xcrun simctl install "$2" "$3"
+        ;;
+    "launch")
+        if [ -z "$2" ] || [ -z "$3" ]; then
+            echo "Usage: sim launch <device> <bundle.id>"
+            exit 1
+        fi
+        echo "Launching $3 on $2..."
+        xcrun simctl launch "$2" "$3"
+        ;;
+    "screenshot")
+        if [ -z "$2" ]; then
+            filename="simulator_$(date +%Y%m%d_%H%M%S).png"
+        else
+            filename="$2"
+        fi
+        echo "Taking screenshot: $filename"
+        xcrun simctl io booted screenshot "$filename"
+        echo "Screenshot saved: $filename"
+        ;;
+    "record")
+        if [ -z "$2" ]; then
+            filename="simulator_$(date +%Y%m%d_%H%M%S).mp4"
+        else
+            filename="$2"
+        fi
+        echo "Recording video: $filename (Press Ctrl+C to stop)"
+        xcrun simctl io booted recordVideo "$filename"
+        ;;
+    "url")
+        if [ -z "$2" ]; then
+            echo "Usage: sim url <url>"
+            exit 1
+        fi
+        echo "Opening URL: $2"
+        xcrun simctl openurl booted "$2"
+        ;;
+    "status")
+        echo "Simulator Status:"
+        xcrun simctl list devices | grep "Booted"
+        ;;
+    "logs")
+        echo "Showing simulator logs..."
+        xcrun simctl spawn booted log stream --level debug
+        ;;
+    "reset")
+        if [ -z "$2" ]; then
+            echo "Usage: sim reset <device>"
+            exit 1
+        fi
+        echo "Resetting $2..."
+        xcrun simctl erase "$2"
+        ;;
+    *)
+        echo "iOS Simulator Control for Claude Code"
+        echo ""
+        echo "Usage: sim <command> [options]"
+        echo ""
+        echo "Commands:"
+        echo "  list                    - List available simulators"
+        echo "  boot [device]          - Boot simulator (default: iPhone 16 Pro)"
+        echo "  shutdown [device|all]  - Shutdown simulator(s)"
+        echo "  install <device> <app> - Install app on device"
+        echo "  launch <device> <id>   - Launch app by bundle ID"
+        echo "  screenshot [filename]  - Take screenshot"
+        echo "  record [filename]      - Record video"
+        echo "  url <url>             - Open URL in Safari"
+        echo "  status                - Show running simulators"
+        echo "  logs                  - Show simulator logs"
+        echo "  reset <device>        - Reset simulator"
+        echo ""
+        echo "Examples:"
+        echo "  sim boot"
+        echo "  sim boot 'iPhone 16 Pro'"
+        echo "  sim screenshot"
+        echo "  sim url 'https://apple.com'"
+        ;;
+esac

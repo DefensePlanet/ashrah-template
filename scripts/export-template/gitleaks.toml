@@ -1,0 +1,73 @@
+# gitleaks config for the exported template.
+#
+#   gitleaks detect --no-git --redact --config scripts/export-template/gitleaks.toml --source <dir>
+#
+# Extends the default ruleset. Every [[allowlists]] entry is an AND-condition:
+# the PATH and the specific, hand-confirmed placeholder VALUE must both match,
+# so each file is still scanned for every other secret shape.
+# Requires gitleaks >= 8.25 ([[allowlists]] + condition = "AND").
+
+[extend]
+useDefault = true
+
+# --- hand-confirmed placeholder / public values (2026-10-06 audit) ----------
+
+[[allowlists]]
+description = "sharp-edges lessons: canonical fake key in negative examples"
+condition = "AND"
+paths = ['''\.claude/sharp-edges/[^/]+\.ya?ml$''']
+regexes = ['''sk-1234567890abcdef''']
+
+[[allowlists]]
+description = "MCP path doc: obviously fake Airtable PATs (real one scrubbed by export.yaml)"
+condition = "AND"
+paths = ['''global/docs/MCP_Path_Resolution_Strategy\.md$''']
+regexes = ['''pat(?:123456789|X{6,})''']
+
+[[allowlists]]
+description = "API key doc: truncated example OpenAI key"
+condition = "AND"
+paths = ['''global/docs/API_Key_Management\.md$''']
+regexes = ['''sk-proj-[a-z]{3}123''']
+
+[[allowlists]]
+description = "credential README: a purpose label, not a key"
+condition = "AND"
+paths = ['''tools/README_credential_management\.md$''']
+regexes = ['''api-access-for-project-x''']
+
+[[allowlists]]
+description = "cartpanda pytest fixture value"
+condition = "AND"
+paths = ['''tools/cartpanda/tests/conftest\.py$''']
+regexes = ['''test_key_abc123''']
+
+[[allowlists]]
+description = "SDK webhook docs/server: curl placeholder keys"
+condition = "AND"
+paths = ['''tools/sdk/(?:WEBHOOK_SERVER\.md|WEEK3_COMPLETION\.md|webhook_server\.py)$''']
+regexes = ['''(?i)your-(api|secret)-key(-here)?''']
+
+[[allowlists]]
+description = "Infinity router: documented local-dev default"
+condition = "AND"
+paths = ['''tools/use-infinity\.sh$''']
+regexes = ['''dev-router-key''']
+
+[[allowlists]]
+description = "apple_provision.py: PEM header used as a format check, no key body"
+condition = "AND"
+paths = ['''tools/apple_provision\.py$''']
+regexes = ['''BEGIN PRIVATE KEY''']
+
+[[allowlists]]
+description = "Gemini CLI's public installed-app OAuth client secret (published upstream)"
+condition = "AND"
+paths = ['''tools/media-engine/engine/gemini_oauth_client\.py$''']
+regexes = ['''GOCSPX-[A-Za-z0-9_-]{28}''']
+
+[[allowlists]]
+description = ".env.example: every value is empty; the generic rule reads the NEXT key name as a value"
+condition = "AND"
+paths = ['''(^|/)\.env\.example$''']
+regexes = ['''^[A-Z][A-Z0-9_]*$''']

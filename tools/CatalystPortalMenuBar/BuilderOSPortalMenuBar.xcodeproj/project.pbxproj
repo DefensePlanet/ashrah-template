@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		APP_FILE /* BuilderOSPortalMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = APP_REF /* BuilderOSPortalMenuBarApp.swift */; };
+		MENU_FILE /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = MENU_REF /* MenuBarController.swift */; };
+		STATUS_FILE /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = STATUS_REF /* StatusBarView.swift */; };
+		PM2_FILE /* PM2Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = PM2_REF /* PM2Manager.swift */; };
+		SERVICE_FILE /* ServiceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SERVICE_REF /* ServiceStatus.swift */; };
+		IDLE_FILE /* IdleTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = IDLE_REF /* IdleTimerView.swift */; };
+		ASSETS_FILE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ASSETS_REF /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		PRODUCT_REF /* BuilderOSPortalMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuilderOSPortalMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		APP_REF /* BuilderOSPortalMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BuilderOSPortalMenuBarApp.swift; path = BuilderOSPortalMenuBar/BuilderOSPortalMenuBarApp.swift; sourceTree = "<group>"; };
+		MENU_REF /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuBarController.swift; path = BuilderOSPortalMenuBar/MenuBarController.swift; sourceTree = "<group>"; };
+		STATUS_REF /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusBarView.swift; path = BuilderOSPortalMenuBar/StatusBarView.swift; sourceTree = "<group>"; };
+		PM2_REF /* PM2Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PM2Manager.swift; path = BuilderOSPortalMenuBar/PM2Manager.swift; sourceTree = "<group>"; };
+		SERVICE_REF /* ServiceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceStatus.swift; path = BuilderOSPortalMenuBar/ServiceStatus.swift; sourceTree = "<group>"; };
+		IDLE_REF /* IdleTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IdleTimerView.swift; path = BuilderOSPortalMenuBar/IdleTimerView.swift; sourceTree = "<group>"; };
+		ASSETS_REF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BuilderOSPortalMenuBar/Assets.xcassets; sourceTree = "<group>"; };
+		INFO_REF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BuilderOSPortalMenuBar/Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FRAMEWORKS_PHASE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ROOT_GROUP = {
+			isa = PBXGroup;
+			children = (
+				SOURCE_GROUP /* BuilderOSPortalMenuBar */,
+				PRODUCTS_GROUP /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		PRODUCTS_GROUP /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				PRODUCT_REF /* BuilderOSPortalMenuBar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		SOURCE_GROUP /* BuilderOSPortalMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				APP_REF /* BuilderOSPortalMenuBarApp.swift */,
+				MENU_REF /* MenuBarController.swift */,
+				STATUS_REF /* StatusBarView.swift */,
+				PM2_REF /* PM2Manager.swift */,
+				SERVICE_REF /* ServiceStatus.swift */,
+				IDLE_REF /* IdleTimerView.swift */,
+				ASSETS_REF /* Assets.xcassets */,
+				INFO_REF /* Info.plist */,
+			);
+			name = BuilderOSPortalMenuBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TARGET_REF /* BuilderOSPortalMenuBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CONFIG_LIST /* Build configuration list for PBXNativeTarget "BuilderOSPortalMenuBar" */;
+			buildPhases = (
+				SOURCES_PHASE /* Sources */,
+				FRAMEWORKS_PHASE /* Frameworks */,
+				RESOURCES_PHASE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BuilderOSPortalMenuBar;
+			productName = BuilderOSPortalMenuBar;
+			productReference = PRODUCT_REF /* BuilderOSPortalMenuBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PROJECT_REF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					TARGET_REF = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = PROJECT_CONFIG_LIST /* Build configuration list for PBXProject "BuilderOSPortalMenuBar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ROOT_GROUP;
+			productRefGroup = PRODUCTS_GROUP /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TARGET_REF /* BuilderOSPortalMenuBar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		RESOURCES_PHASE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ASSETS_FILE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SOURCES_PHASE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				APP_FILE /* BuilderOSPortalMenuBarApp.swift in Sources */,
+				MENU_FILE /* MenuBarController.swift in Sources */,
+				STATUS_FILE /* StatusBarView.swift in Sources */,
+				PM2_FILE /* PM2Manager.swift in Sources */,
+				SERVICE_FILE /* ServiceStatus.swift in Sources */,
+				IDLE_FILE /* IdleTimerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		PROJECT_DEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		PROJECT_RELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		TARGET_DEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BuilderOSPortalMenuBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.builderos.portal-menu-bar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		TARGET_RELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BuilderOSPortalMenuBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.builderos.portal-menu-bar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		PROJECT_CONFIG_LIST /* Build configuration list for PBXProject "BuilderOSPortalMenuBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				PROJECT_DEBUG /* Debug */,
+				PROJECT_RELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CONFIG_LIST /* Build configuration list for PBXNativeTarget "BuilderOSPortalMenuBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TARGET_DEBUG /* Debug */,
+				TARGET_RELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = PROJECT_REF /* Project object */;
+}

@@ -1,0 +1,25 @@
+{
+  "rag_service": {
+    "auth_enabled": true,
+    "auth_token_hash": "REPLACE_WITH_SHA256_OF_YOUR_TOKEN",
+    "salt": "2b27593ad23cff0e4154d65ac4bc723f",
+    "allowed_origins": [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "http://localhost:8080",
+      "http://127.0.0.1:8080"
+    ],
+    "rate_limit": {
+      "enabled": true,
+      "max_requests_per_minute": 100,
+      "lockout_duration_minutes": 15,
+      "max_failed_attempts": 10
+    },
+    "content_filtering": {
+      "enabled": true,
+      "scan_for_secrets": true
+    }
+  },
+  "created_at": "2025-08-12T10:32:00Z",
+  "version": "1.0.0"
+}

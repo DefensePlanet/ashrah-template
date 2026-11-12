@@ -1,0 +1,15 @@
+{
+  "defaultCapsule": {
+    "workingDir": "/path/to/your/catalyst",
+    "name": "Catalyst",
+    "defaultMode": "pi"
+  },
+  "chats": {
+    "-100XXXXXXXXXX": {
+      "capsuleId": "my-capsule",
+      "workingDir": "/path/to/your/catalyst/capsules/my-capsule",
+      "name": "My Capsule",
+      "defaultMode": "pi"
+    }
+  }
+}

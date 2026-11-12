@@ -1,0 +1,43 @@
+{
+  "name": "@catalyst/vite-config",
+  "version": "1.0.0",
+  "description": "Shared Vite configuration for Catalyst React projects. Includes react-grab for AI-assisted development.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --external vite --external @vitejs/plugin-react --external @catalyst/react-grab",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --external vite --external @vitejs/plugin-react --external @catalyst/react-grab --watch"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "dependencies": {
+    "@catalyst/react-grab": "file:../react-grab"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.9",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "vite",
+    "config",
+    "catalyst",
+    "react",
+    "react-grab"
+  ],
+  "license": "MIT",
+  "author": "Catalyst"
+}

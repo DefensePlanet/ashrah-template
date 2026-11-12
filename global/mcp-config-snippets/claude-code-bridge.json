@@ -1,0 +1,7 @@
+{
+  "bridge": {
+    "command": "{{HOME_DIR}}/Documents/Builder/tools/bridge-mcp/start.sh",
+    "args": [],
+    "env": {}
+  }
+}

@@ -1,0 +1,168 @@
+# Capsule-Specific Scope Mappings
+# Used by git-commit-helper to suggest appropriate scopes based on capsule context
+
+capsules:
+  brandjack:
+    description: "Instagram brand growth automation"
+    scopes:
+      - name: scraper
+        description: "Instagram scraping and data collection"
+        patterns: ["scraper/", "instagram_api"]
+      - name: content
+        description: "Content generation and management"
+        patterns: ["content/", "generator"]
+      - name: posting
+        description: "Post scheduling and automation"
+        patterns: ["posting/", "scheduler"]
+      - name: engagement
+        description: "Likes, comments, follows automation"
+        patterns: ["engagement/", "interactions"]
+
+  ecommerce:
+    description: "E-commerce platform"
+    scopes:
+      - name: products
+        description: "Product catalog and management"
+        patterns: ["products/", "catalog"]
+      - name: checkout
+        description: "Shopping cart and payment flow"
+        patterns: ["checkout/", "cart", "payment"]
+      - name: inventory
+        description: "Stock and inventory management"
+        patterns: ["inventory/", "stock"]
+      - name: shipping
+        description: "Order fulfillment and shipping"
+        patterns: ["shipping/", "orders", "fulfillment"]
+
+  jellyfin-server-ops:
+    description: "Media server operations"
+    scopes:
+      - name: media
+        description: "Media library and organization"
+        patterns: ["media/", "library"]
+      - name: server
+        description: "Jellyfin server configuration"
+        patterns: ["server/", "config", "jellyfin"]
+      - name: downloads
+        description: "Download automation"
+        patterns: ["downloads/", "automation"]
+      - name: streaming
+        description: "Streaming setup and optimization"
+        patterns: ["streaming/", "transcode"]
+
+  catalyst-mobile:
+    description: "Catalyst Mobile app"
+    scopes:
+      - name: ios
+        description: "iOS-specific code"
+        patterns: ["ios/", "swift", "xcode"]
+      - name: android
+        description: "Android-specific code"
+        patterns: ["android/", "kotlin"]
+      - name: ui
+        description: "Cross-platform UI components"
+        patterns: ["ui/", "components/", "screens/"]
+      - name: api
+        description: "API integration and networking"
+        patterns: ["api/", "network/", "services/"]
+
+  jar-label-automation:
+    description: "Kitchen jar label generator"
+    scopes:
+      - name: labels
+        description: "Label generation and printing"
+        patterns: ["labels/", "generator"]
+      - name: shortcuts
+        description: "iOS Shortcuts integration"
+        patterns: ["shortcuts/", "automation"]
+      - name: organize
+        description: "Organization and categorization"
+        patterns: ["organize/", "categories"]
+
+  instagram-cropper:
+    description: "Instagram image cropping tool"
+    scopes:
+      - name: crop
+        description: "Image cropping logic"
+        patterns: ["crop/", "image"]
+      - name: aspect
+        description: "Aspect ratio handling"
+        patterns: ["aspect/", "ratio"]
+      - name: ui
+        description: "User interface"
+        patterns: ["ui/", "interface"]
+
+  winthemorning:
+    description: "Morning routine optimizer"
+    scopes:
+      - name: routine
+        description: "Routine scheduling and execution"
+        patterns: ["routine/", "schedule"]
+      - name: habits
+        description: "Habit tracking"
+        patterns: ["habits/", "tracking"]
+      - name: productivity
+        description: "Productivity metrics"
+        patterns: ["productivity/", "metrics"]
+
+# BuilderOS System (when working in root or /tools, /global, etc.)
+system:
+  description: "BuilderOS core system"
+  scopes:
+    - name: agents
+      description: "Agent definitions and configuration"
+      patterns: [".claude/agents/", "agents/"]
+    - name: skills
+      description: "Skill implementations"
+      patterns: [".claude/skills/", "skills/"]
+    - name: commands
+      description: "Slash commands"
+      patterns: [".claude/commands/", "commands/"]
+    - name: tools
+      description: "CLI tools and utilities"
+      patterns: ["tools/"]
+    - name: governance
+      description: "Governance framework and policies"
+      patterns: ["global/governance/", "governance/"]
+    - name: registry
+      description: "Agent registry and metrics"
+      patterns: ["registry/"]
+    - name: memory
+      description: "MCP memory system"
+      patterns: ["global/mcp/", "memory"]
+    - name: workflow
+      description: "Workflow engine"
+      patterns: ["src/workflow", "workflow"]
+    - name: rag
+      description: "RAG service and vector store"
+      patterns: ["global/rag/", "chroma"]
+    - name: docs
+      description: "Documentation"
+      patterns: ["global/docs/", "docs/", "*.md"]
+    - name: mcp
+      description: "MCP server configurations"
+      patterns: ["mcp_", "mcp.json", "playwright-mcp"]
+
+# Generic scopes (fallback when no capsule-specific scope fits)
+generic:
+  scopes:
+    - name: core
+      description: "Core functionality"
+    - name: api
+      description: "API layer"
+    - name: ui
+      description: "User interface"
+    - name: db
+      description: "Database"
+    - name: auth
+      description: "Authentication and authorization"
+    - name: config
+      description: "Configuration"
+    - name: deps
+      description: "Dependencies"
+    - name: tests
+      description: "Testing infrastructure"
+    - name: ci
+      description: "CI/CD pipeline"
+    - name: build
+      description: "Build system"

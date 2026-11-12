@@ -1,0 +1,793 @@
+{
+  "nodes": {
+    "capsule:jar-label-automation": {
+      "id": "capsule:jar-label-automation",
+      "name": "jar-label-automation",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/jar-label-automation",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/jar-label-automation",
+        "type": "automation",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "service:http_requests": {
+      "id": "service:http_requests",
+      "name": "HTTP Requests",
+      "type": "service",
+      "version": null,
+      "source": "inferred",
+      "metadata": {}
+    },
+    "capsule:brandjack": {
+      "id": "capsule:brandjack",
+      "name": "brandjack",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/brandjack",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/brandjack",
+        "type": "automation",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "capsule:jellyfin-server-ops": {
+      "id": "capsule:jellyfin-server-ops",
+      "name": "jellyfin-server-ops",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/jellyfin-server-ops",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/jellyfin-server-ops",
+        "type": "operational-manager",
+        "description": "Personal operational manager and knowledge base for {{USER_NAME}}'s Jellyfin media server ecosystem - ongoing refinement and optimization",
+        "lane": "personal"
+      }
+    },
+    "capsule:system-ops-advisor": {
+      "id": "capsule:system-ops-advisor",
+      "name": "system-ops-advisor",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/system-ops-advisor",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/system-ops-advisor",
+        "type": "system-agent",
+        "description": "Weekly system operations advisor that scans for relevant tech updates and provides goal-aligned recommendations",
+        "lane": "standard"
+      }
+    },
+    "capsule:shortcut-demo": {
+      "id": "capsule:shortcut-demo",
+      "name": "shortcut-demo",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/shortcut-demo",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/shortcut-demo",
+        "type": "automation",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "capsule:winthemorning": {
+      "id": "capsule:winthemorning",
+      "name": "winthemorning",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/winthemorning",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/winthemorning",
+        "type": "automation",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "capsule:ops": {
+      "id": "capsule:ops",
+      "name": "ops",
+      "type": "capsule",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/ops",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/ops"
+      }
+    },
+    "capsule:instagram-cropper": {
+      "id": "capsule:instagram-cropper",
+      "name": "instagram-cropper",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/instagram-cropper",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/instagram-cropper",
+        "type": "automation",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "capsule:catalyst-mobile": {
+      "id": "capsule:catalyst-mobile",
+      "name": "catalyst-mobile",
+      "type": "capsule",
+      "version": "1.0.0",
+      "source": "{{HOME_DIR}}/Documents/Builder/capsules/catalyst-mobile",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/capsules/catalyst-mobile",
+        "type": "system-agent",
+        "description": "Auto-generated capsule configuration - update as needed",
+        "lane": "standard"
+      }
+    },
+    "tool:parallel_capsules_test": {
+      "id": "tool:parallel_capsules_test",
+      "name": "parallel_capsules_test",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/parallel_capsules_test.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/parallel_capsules_test.py"
+      }
+    },
+    "tool:test_context_persistence": {
+      "id": "tool:test_context_persistence",
+      "name": "test_context_persistence",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_context_persistence.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_context_persistence.py"
+      }
+    },
+    "tool:agent_usage_tracker": {
+      "id": "tool:agent_usage_tracker",
+      "name": "agent_usage_tracker",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_usage_tracker.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_usage_tracker.py"
+      }
+    },
+    "tool:agent_tools_check": {
+      "id": "tool:agent_tools_check",
+      "name": "agent_tools_check",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_tools_check.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_tools_check.py"
+      }
+    },
+    "tool:events_logger": {
+      "id": "tool:events_logger",
+      "name": "events_logger",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/events_logger.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/events_logger.py"
+      }
+    },
+    "tool:mcp_profile_manager": {
+      "id": "tool:mcp_profile_manager",
+      "name": "mcp_profile_manager",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_profile_manager.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_profile_manager.py"
+      }
+    },
+    "tool:run_with_manifest": {
+      "id": "tool:run_with_manifest",
+      "name": "run_with_manifest",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/run_with_manifest.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/run_with_manifest.py"
+      }
+    },
+    "tool:mcp_grants_check": {
+      "id": "tool:mcp_grants_check",
+      "name": "mcp_grants_check",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_grants_check.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_grants_check.py"
+      }
+    },
+    "tool:agent_doc_standardizer": {
+      "id": "tool:agent_doc_standardizer",
+      "name": "agent_doc_standardizer",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_doc_standardizer.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_doc_standardizer.py"
+      }
+    },
+    "tool:agent_registry": {
+      "id": "tool:agent_registry",
+      "name": "agent_registry",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_registry.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_registry.py"
+      }
+    },
+    "tool:dependency_mapper": {
+      "id": "tool:dependency_mapper",
+      "name": "dependency_mapper",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/dependency_mapper.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/dependency_mapper.py"
+      }
+    },
+    "tool:create_starter_templates": {
+      "id": "tool:create_starter_templates",
+      "name": "create_starter_templates",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/create_starter_templates.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/create_starter_templates.py"
+      }
+    },
+    "tool:generate_n8n_workflow": {
+      "id": "tool:generate_n8n_workflow",
+      "name": "generate_n8n_workflow",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/generate_n8n_workflow.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/generate_n8n_workflow.py"
+      }
+    },
+    "tool:system_ops_integration": {
+      "id": "tool:system_ops_integration",
+      "name": "system_ops_integration",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/system_ops_integration.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/system_ops_integration.py"
+      }
+    },
+    "tool:run_manifest_schema": {
+      "id": "tool:run_manifest_schema",
+      "name": "run_manifest_schema",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_schema.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_schema.py"
+      }
+    },
+    "tool:test_enhanced_debugger": {
+      "id": "tool:test_enhanced_debugger",
+      "name": "test_enhanced_debugger",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_enhanced_debugger.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_enhanced_debugger.py"
+      }
+    },
+    "tool:capsule_maintenance_manager": {
+      "id": "tool:capsule_maintenance_manager",
+      "name": "capsule_maintenance_manager",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/capsule_maintenance_manager.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/capsule_maintenance_manager.py"
+      }
+    },
+    "tool:performance_baseline": {
+      "id": "tool:performance_baseline",
+      "name": "performance_baseline",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/performance_baseline.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/performance_baseline.py"
+      }
+    },
+    "tool:inbox_sync": {
+      "id": "tool:inbox_sync",
+      "name": "inbox_sync",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/inbox_sync.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/inbox_sync.py"
+      }
+    },
+    "tool:fork_capsule": {
+      "id": "tool:fork_capsule",
+      "name": "fork_capsule",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/fork_capsule.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/fork_capsule.py"
+      }
+    },
+    "tool:configure_rag_security": {
+      "id": "tool:configure_rag_security",
+      "name": "configure_rag_security",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/configure_rag_security.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/configure_rag_security.py"
+      }
+    },
+    "tool:lint_spec": {
+      "id": "tool:lint_spec",
+      "name": "lint_spec",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/lint_spec.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/lint_spec.py"
+      }
+    },
+    "tool:create_sample_manifest": {
+      "id": "tool:create_sample_manifest",
+      "name": "create_sample_manifest",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/create_sample_manifest.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/create_sample_manifest.py"
+      }
+    },
+    "tool:replay_capsule": {
+      "id": "tool:replay_capsule",
+      "name": "replay_capsule",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/replay_capsule.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/replay_capsule.py"
+      }
+    },
+    "tool:run_manifest_validator": {
+      "id": "tool:run_manifest_validator",
+      "name": "run_manifest_validator",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_validator.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_validator.py"
+      }
+    },
+    "tool:secretctl": {
+      "id": "tool:secretctl",
+      "name": "secretctl",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/secretctl.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/secretctl.py"
+      }
+    },
+    "tool:migrate_dev_to_capsules": {
+      "id": "tool:migrate_dev_to_capsules",
+      "name": "migrate_dev_to_capsules",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/migrate_dev_to_capsules.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/migrate_dev_to_capsules.py"
+      }
+    },
+    "tool:test_system_integration": {
+      "id": "tool:test_system_integration",
+      "name": "test_system_integration",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_system_integration.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_system_integration.py"
+      }
+    },
+    "tool:capsule_health_monitor": {
+      "id": "tool:capsule_health_monitor",
+      "name": "capsule_health_monitor",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/capsule_health_monitor.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/capsule_health_monitor.py"
+      }
+    },
+    "tool:compose_codex_context": {
+      "id": "tool:compose_codex_context",
+      "name": "compose_codex_context",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/compose_codex_context.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/compose_codex_context.py"
+      }
+    },
+    "tool:debugger_language_patterns": {
+      "id": "tool:debugger_language_patterns",
+      "name": "debugger_language_patterns",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/debugger_language_patterns.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/debugger_language_patterns.py"
+      }
+    },
+    "tool:test_lane_guard": {
+      "id": "tool:test_lane_guard",
+      "name": "test_lane_guard",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_lane_guard.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_lane_guard.py"
+      }
+    },
+    "tool:language_detector": {
+      "id": "tool:language_detector",
+      "name": "language_detector",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/language_detector.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/language_detector.py"
+      }
+    },
+    "tool:mcp_audit_logger": {
+      "id": "tool:mcp_audit_logger",
+      "name": "mcp_audit_logger",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_audit_logger.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_audit_logger.py"
+      }
+    },
+    "tool:agent_context_audit": {
+      "id": "tool:agent_context_audit",
+      "name": "agent_context_audit",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_context_audit.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_context_audit.py"
+      }
+    },
+    "tool:claude_agent_audit": {
+      "id": "tool:claude_agent_audit",
+      "name": "claude_agent_audit",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/claude_agent_audit.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/claude_agent_audit.py"
+      }
+    },
+    "tool:system_health_rollup": {
+      "id": "tool:system_health_rollup",
+      "name": "system_health_rollup",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/system_health_rollup.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/system_health_rollup.py"
+      }
+    },
+    "tool:circuit_breaker": {
+      "id": "tool:circuit_breaker",
+      "name": "circuit_breaker",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/circuit_breaker.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/circuit_breaker.py"
+      }
+    },
+    "tool:daily_dependency_check": {
+      "id": "tool:daily_dependency_check",
+      "name": "daily_dependency_check",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/daily_dependency_check.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/daily_dependency_check.py"
+      }
+    },
+    "tool:consolidate_mcps": {
+      "id": "tool:consolidate_mcps",
+      "name": "consolidate_mcps",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/consolidate_mcps.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/consolidate_mcps.py"
+      }
+    },
+    "tool:advisor_rollup": {
+      "id": "tool:advisor_rollup",
+      "name": "advisor_rollup",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/advisor_rollup.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/advisor_rollup.py"
+      }
+    },
+    "tool:normalize_src": {
+      "id": "tool:normalize_src",
+      "name": "normalize_src",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/normalize_src.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/normalize_src.py"
+      }
+    },
+    "tool:builder_service_utils": {
+      "id": "tool:builder_service_utils",
+      "name": "builder_service_utils",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/builder_service_utils.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/builder_service_utils.py"
+      }
+    },
+    "tool:mcp_auto_configurator": {
+      "id": "tool:mcp_auto_configurator",
+      "name": "mcp_auto_configurator",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_auto_configurator.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_auto_configurator.py"
+      }
+    },
+    "tool:capsule_autopsy_agent": {
+      "id": "tool:capsule_autopsy_agent",
+      "name": "capsule_autopsy_agent",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/capsule_autopsy_agent.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/capsule_autopsy_agent.py"
+      }
+    },
+    "tool:create_linked_xcode_project": {
+      "id": "tool:create_linked_xcode_project",
+      "name": "create_linked_xcode_project",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/create_linked_xcode_project.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/create_linked_xcode_project.py"
+      }
+    },
+    "tool:capsule_autopsy": {
+      "id": "tool:capsule_autopsy",
+      "name": "capsule_autopsy",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/capsule_autopsy.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/capsule_autopsy.py"
+      }
+    },
+    "tool:post_run_hook": {
+      "id": "tool:post_run_hook",
+      "name": "post_run_hook",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/post_run_hook.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/post_run_hook.py"
+      }
+    },
+    "tool:test_agent_routing": {
+      "id": "tool:test_agent_routing",
+      "name": "test_agent_routing",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_agent_routing.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_agent_routing.py"
+      }
+    },
+    "tool:agent_test_framework": {
+      "id": "tool:agent_test_framework",
+      "name": "agent_test_framework",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/agent_test_framework.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/agent_test_framework.py"
+      }
+    },
+    "tool:ui_pack_resolver": {
+      "id": "tool:ui_pack_resolver",
+      "name": "ui_pack_resolver",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/ui_pack_resolver.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/ui_pack_resolver.py"
+      }
+    },
+    "tool:validate_improvements": {
+      "id": "tool:validate_improvements",
+      "name": "validate_improvements",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/validate_improvements.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/validate_improvements.py"
+      }
+    },
+    "tool:test_shortcut_generation": {
+      "id": "tool:test_shortcut_generation",
+      "name": "test_shortcut_generation",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/test_shortcut_generation.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/test_shortcut_generation.py"
+      }
+    },
+    "tool:generate_shortcuts": {
+      "id": "tool:generate_shortcuts",
+      "name": "generate_shortcuts",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/generate_shortcuts.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/generate_shortcuts.py"
+      }
+    },
+    "tool:migrate_to_capsules": {
+      "id": "tool:migrate_to_capsules",
+      "name": "migrate_to_capsules",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/migrate_to_capsules.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/migrate_to_capsules.py"
+      }
+    },
+    "tool:metrics_rollup": {
+      "id": "tool:metrics_rollup",
+      "name": "metrics_rollup",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/metrics_rollup.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/metrics_rollup.py"
+      }
+    },
+    "tool:mcp_resolver": {
+      "id": "tool:mcp_resolver",
+      "name": "mcp_resolver",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_resolver.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_resolver.py"
+      }
+    },
+    "tool:mcp_platform_loader": {
+      "id": "tool:mcp_platform_loader",
+      "name": "mcp_platform_loader",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/mcp_platform_loader.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/mcp_platform_loader.py"
+      }
+    },
+    "tool:run_manifest_cli": {
+      "id": "tool:run_manifest_cli",
+      "name": "run_manifest_cli",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_cli.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/run_manifest_cli.py"
+      }
+    },
+    "tool:fix_hardcoded_paths": {
+      "id": "tool:fix_hardcoded_paths",
+      "name": "fix_hardcoded_paths",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/fix_hardcoded_paths.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/fix_hardcoded_paths.py"
+      }
+    },
+    "tool:merge_mcp": {
+      "id": "tool:merge_mcp",
+      "name": "merge_mcp",
+      "type": "tool",
+      "version": null,
+      "source": "{{HOME_DIR}}/Documents/Builder/tools/merge_mcp.py",
+      "metadata": {
+        "path": "{{HOME_DIR}}/Documents/Builder/tools/merge_mcp.py"
+      }
+    }
+  },
+  "edges": [
+    {
+      "from_node": "capsule:jar-label-automation",
+      "to_node": "service:http_requests",
+      "relationship": "uses",
+      "optional": false,
+      "version_constraint": null,
+      "metadata": {}
+    },
+    {
+      "from_node": "capsule:system-ops-advisor",
+      "to_node": "service:http_requests",
+      "relationship": "uses",
+      "optional": false,
+      "version_constraint": null,
+      "metadata": {}
+    },
+    {
+      "from_node": "capsule:system-ops-advisor",
+      "to_node": "service:http_requests",
+      "relationship": "uses",
+      "optional": false,
+      "version_constraint": null,
+      "metadata": {}
+    },
+    {
+      "from_node": "capsule:system-ops-advisor",
+      "to_node": "tool:rag_client",
+      "relationship": "imports",
+      "optional": false,
+      "version_constraint": null,
+      "metadata": {}
+    },
+    {
+      "from_node": "capsule:instagram-cropper",
+      "to_node": "service:http_requests",
+      "relationship": "uses",
+      "optional": false,
+      "version_constraint": null,
+      "metadata": {}
+    }
+  ],
+  "generated_at": "2025-08-14T14:58:14.055707",
+  "graph_hash": "67fde54a4410f482",
+  "statistics": {
+    "node_count": 71,
+    "edge_count": 5,
+    "node_types": {
+      "capsule": 9,
+      "service": 1,
+      "tool": 61
+    },
+    "edge_types": {
+      "uses": 4,
+      "imports": 1
+    }
+  }
+}

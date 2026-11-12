@@ -1,0 +1,56 @@
+{
+  "name": "@catalyst/react-grab",
+  "version": "1.0.0",
+  "description": "React Grab - AI-powered element selection and modification tool. A customized tool merging features from the original React Grab repository and Cleo.build.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "react-grab": "./dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./vite": {
+      "types": "./dist/vite-plugin.d.ts",
+      "import": "./dist/vite-plugin.mjs",
+      "require": "./dist/vite-plugin.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "npm run build:main && npm run build:browser",
+    "build:main": "tsup src/index.ts src/vite-plugin.ts src/cli.ts --format cjs,esm --dts",
+    "build:browser": "tsup src/browser-bundle.ts --format iife --minify --out-dir dist",
+    "dev": "npm run build:main && npm run build:browser && tsup src/index.ts src/vite-plugin.ts src/cli.ts src/browser-bundle.ts --format cjs,esm --dts --watch"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.9"
+  },
+  "keywords": [
+    "react",
+    "grab",
+    "element-selection",
+    "ai",
+    "catalyst",
+    "cleo",
+    "vite-plugin"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/catalyst/react-grab"
+  },
+  "author": "Catalyst"
+}

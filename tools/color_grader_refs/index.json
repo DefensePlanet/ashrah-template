@@ -1,0 +1,27 @@
+[
+  {
+    "name": "hero-sunset",
+    "filename": "hero-sunset_ce37d45d.png",
+    "path": "{{CATALYST_ROOT}}/tools/color_grader_refs/hero-sunset_ce37d45d.png",
+    "original_path": "/tmp/test_reference.png",
+    "tags": [
+      "outdoor",
+      "warm",
+      "golden-hour"
+    ],
+    "notes": "Test hero shot",
+    "date_added": "2026-02-08T17:15:24.655425"
+  },
+  {
+    "name": "test-frame",
+    "filename": "test-frame_0f3faa42.png",
+    "path": "{{CATALYST_ROOT}}/tools/color_grader_refs/test-frame_0f3faa42.png",
+    "original_path": "/tmp/test_frame.png",
+    "tags": [
+      "test",
+      "synthetic"
+    ],
+    "notes": "",
+    "date_added": "2026-02-08T17:18:31.074484"
+  }
+]

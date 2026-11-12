@@ -1,0 +1,34 @@
+# Capsule Registry - Single source of truth for all Catalyst capsules
+# Used by: /capsules command, navigation intelligence, capsule tooling
+#
+# Copy this file to capsule-registry.yaml and add your capsules:
+#   cp capsule-registry.example.yaml capsule-registry.yaml
+#
+# Each entry needs:
+#   name: Human-readable name
+#   emoji: Icon for display
+#   description: What the capsule does
+#   shortcut: /slash-command (or null)
+#   status: active | planning | dormant
+
+capsules:
+  example-project:
+    name: Example Project
+    emoji: 🚀
+    description: A sample capsule to demonstrate the registry format
+    shortcut: null
+    status: active
+
+  example-saas:
+    name: Example SaaS
+    emoji: 💼
+    description: SaaS product with auth, billing, and dashboard
+    shortcut: /saas
+    status: active
+
+  example-dormant:
+    name: Example Dormant
+    emoji: 💤
+    description: A paused project kept for reference
+    shortcut: null
+    status: dormant

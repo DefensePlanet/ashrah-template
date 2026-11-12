@@ -1,0 +1,331 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Model Mapping for Claude Code Infinity Mode",
+  "description": "Maps specialist agents to their preferred Infinity Mode models. Legacy mode uses the native 'model:' field from agent definitions. Infinity mode routes through Claude Code Router (port 3456) → Bifrost gateway (port 8083) → provider APIs.",
+  "version": "1.0.0",
+  "updated": "2025-11-03",
+  "agents": {
+    "🧠 2nd Brain Wizard": {
+      "infinity_model": "openrouter/minimax/minimax-m2",
+      "routing_strategy": "think",
+      "rationale": "Lightweight PKM operations (quick capture, vault navigation, link discovery) benefit from fast thinking model",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🤓 AI Nerd": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Gateway configuration and architecture decisions require strong reasoning and technical depth",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🏛️ Backend Developer": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Complex backend architecture, database schema design, and API development require sophisticated reasoning",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🎨 Frontend Developer": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Modern web frameworks (React, Next.js, Vue) and component architecture need solid code generation",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "📱 Mobile Developer": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Swift/SwiftUI and React Native require strong code generation with platform-specific knowledge",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "💻 macOS Dev": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Native macOS development (AppKit, SwiftUI) requires deep Apple platform expertise",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🏗️ System Architect": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "longContext",
+      "rationale": "System design and architectural decisions need extended context and sophisticated reasoning",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "👔 BOSS": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "longContext",
+      "rationale": "Strategic oversight and system evolution require comprehensive context and deep reasoning",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🛡️ Security Analyst": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Security audits and vulnerability assessment require thorough analysis and attention to detail",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🛒 Shopify Exec": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "E-commerce theme development and Shopify Liquid templates are straightforward tasks",
+      "fallback": "openai/gpt-4o"
+    },
+    "🤖 Automator": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Workflow automation and n8n configurations benefit from fast, efficient processing",
+      "fallback": "openai/gpt-4o"
+    },
+    "🐲 Bowser": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Browser automation and anti-detection strategies require sophisticated problem-solving",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🔍 Research Agent": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Multi-source research and competitive analysis require strong reasoning and synthesis",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "📐 UI Designer": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Design systems, wireframes, and component libraries require creative reasoning and visual understanding",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🎨 Graphic Designer": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Brand identity and visual design benefit from creative reasoning and attention to aesthetics",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "📊 Business Analyst": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "KPI tracking and business metrics analysis are data-focused tasks",
+      "fallback": "openai/gpt-4o"
+    },
+    "✍️ Content Marketer": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Content creation benefits from efficient text generation with good quality",
+      "fallback": "openai/gpt-4o"
+    },
+    "🔍 SEO Analyzer": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Technical SEO audits are systematic analyses that work well with efficient models",
+      "fallback": "openai/gpt-4o"
+    },
+    "🎯 Product Strategist": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Product positioning and strategic planning require sophisticated reasoning",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "📈 Marketing Analyst": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Campaign tracking and attribution modeling work well with efficient data analysis",
+      "fallback": "openai/gpt-4o"
+    },
+    "📱 Social Media Marketer": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Social media content benefits from fast, creative text generation",
+      "fallback": "openai/gpt-4o"
+    },
+    "🏄🏼‍♂️ MCP Server Dude": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "MCP server design and protocol compliance require technical depth",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "⛓️ Blockchain Agent": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "default",
+      "rationale": "Smart contracts and security audits require strong technical reasoning and attention to detail",
+      "fallback": "openai/gpt-4o-mini"
+    },
+    "🎯 Brand Specialist": {
+      "infinity_model": "openai/gpt-4o-mini",
+      "routing_strategy": "default",
+      "rationale": "Brand strategy and messaging work well with efficient creative generation",
+      "fallback": "openai/gpt-4o"
+    },
+    "🎬 Visual Media Generator": {
+      "infinity_model": "openai/gpt-4o",
+      "routing_strategy": "media",
+      "rationale": "Video/image generation requires sophisticated prompt engineering and parameter optimization. Agent uses GPT-4o for reasoning, then routes generation requests to various models via Bifrost or direct APIs",
+      "fallback": "openai/gpt-4o-mini",
+      "generation_models": {
+        "video_primary": "openai/sora-2",
+        "video_fallback": "google/veo-3",
+        "image_recommended": "together/black-forest-labs/FLUX.1-schnell-Free",
+        "image_balanced": "replicate/black-forest-labs/flux-dev",
+        "image_premium": "fal/fal-ai/flux-pro",
+        "image_photorealistic": "openai/dall-e-3",
+        "image_google": "google/imagen-3",
+        "image_fallback": "stability-ai/stable-diffusion-3"
+      },
+      "bifrost_routing": {
+        "flux_schnell": "together/black-forest-labs/FLUX.1-schnell-Free",
+        "flux_dev": "replicate/black-forest-labs/flux-dev",
+        "flux_pro": "fal/fal-ai/flux-pro",
+        "note": "Flux models route through Bifrost gateway with provider prefix"
+      }
+    }
+  },
+  "routing_strategies": {
+    "default": {
+      "description": "Standard routing for most tasks",
+      "router_rule": "bifrost-responses,openai/gpt-5-codex"
+    },
+    "think": {
+      "description": "Fast thinking model for quick operations",
+      "router_rule": "bifrost-chat,openrouter/minimax/minimax-m2"
+    },
+    "longContext": {
+      "description": "Extended context for architectural and strategic work",
+      "router_rule": "bifrost-chat,openai/gpt-4o"
+    },
+    "background": {
+      "description": "Background tasks and async operations",
+      "router_rule": "bifrost-chat,openai/gpt-4o"
+    },
+    "webSearch": {
+      "description": "Web search augmented queries",
+      "router_rule": "bifrost-chat,openai/gpt-4o-mini"
+    },
+    "media": {
+      "description": "Visual media generation (video/image)",
+      "router_rule": "bifrost-media,openai/gpt-4o",
+      "note": "Agent uses GPT-4o for prompt engineering and parameter optimization, then routes generation requests to specialized models (Sora 2, Veo 3, DALL-E 3) via Bifrost media endpoint"
+    }
+  },
+  "model_capabilities": {
+    "openai/gpt-4o": {
+      "provider": "openai",
+      "context_window": 128000,
+      "strengths": ["code generation", "complex reasoning", "technical depth"],
+      "use_cases": ["architecture", "complex implementations", "strategic decisions"]
+    },
+    "openai/gpt-4o-mini": {
+      "provider": "openai",
+      "context_window": 128000,
+      "strengths": ["efficiency", "cost-effective", "fast responses"],
+      "use_cases": ["simple tasks", "content creation", "data analysis"]
+    },
+    "openai/gpt-5-codex": {
+      "provider": "openai",
+      "context_window": 128000,
+      "strengths": ["advanced code generation", "multi-file reasoning", "debugging"],
+      "use_cases": ["complex codebases", "refactoring", "advanced features"],
+      "status": "experimental"
+    },
+    "openrouter/minimax/minimax-m2": {
+      "provider": "openrouter",
+      "context_window": 1000000,
+      "strengths": ["fast thinking", "large context", "efficient reasoning"],
+      "use_cases": ["quick operations", "PKM workflows", "rapid prototyping"]
+    },
+    "groq/llama-3.3-70b-versatile": {
+      "provider": "groq",
+      "context_window": 32000,
+      "strengths": ["ultra-fast inference", "open source", "cost-effective"],
+      "use_cases": ["rapid iterations", "simple tasks", "experimentation"],
+      "status": "configured_but_needs_api_key"
+    },
+    "groq/llama-3.1-8b-instant": {
+      "provider": "groq",
+      "context_window": 8000,
+      "strengths": ["extremely fast", "minimal latency", "simple tasks"],
+      "use_cases": ["quick responses", "simple queries", "testing"],
+      "status": "configured_but_needs_api_key"
+    },
+    "openai/sora-2": {
+      "provider": "openai",
+      "model_type": "video_generation",
+      "strengths": ["high-quality video", "realistic motion", "cinematic output"],
+      "use_cases": ["product demos", "concept videos", "marketing content"],
+      "output_formats": ["mp4", "webm"],
+      "max_duration": "60s",
+      "status": "requires_configuration"
+    },
+    "google/veo-3": {
+      "provider": "google",
+      "model_type": "video_generation",
+      "strengths": ["alternative video styles", "good quality", "cost-effective"],
+      "use_cases": ["video generation fallback", "different style preferences"],
+      "output_formats": ["mp4"],
+      "max_duration": "60s",
+      "status": "requires_configuration"
+    },
+    "openai/dall-e-3": {
+      "provider": "openai",
+      "model_type": "image_generation",
+      "strengths": ["high quality", "prompt following", "photorealistic"],
+      "use_cases": ["marketing assets", "product visualization", "concept art"],
+      "output_formats": ["png", "jpg"],
+      "resolutions": ["1024x1024", "1024x1792", "1792x1024"],
+      "status": "active"
+    },
+    "stability-ai/stable-diffusion-3": {
+      "provider": "stability-ai",
+      "model_type": "image_generation",
+      "strengths": ["open source", "customizable", "style variety"],
+      "use_cases": ["image generation fallback", "artistic styles"],
+      "output_formats": ["png", "jpg"],
+      "status": "requires_configuration"
+    },
+    "together/black-forest-labs/FLUX.1-schnell-Free": {
+      "provider": "together-ai",
+      "model_type": "image_generation",
+      "routing": "bifrost",
+      "strengths": ["ultra-fast", "free tier", "good quality", "high volume"],
+      "use_cases": ["rapid prototyping", "testing", "high-volume generation"],
+      "output_formats": ["png", "jpg"],
+      "cost": "$0.003 per image or FREE on Together AI",
+      "generation_time": "2-3 seconds",
+      "status": "active_via_bifrost"
+    },
+    "replicate/black-forest-labs/flux-dev": {
+      "provider": "replicate",
+      "model_type": "image_generation",
+      "routing": "bifrost",
+      "strengths": ["excellent quality", "balanced speed", "open source", "fine-tunable"],
+      "use_cases": ["production images", "brand assets", "high-quality content"],
+      "output_formats": ["png", "jpg", "webp"],
+      "cost": "$0.025 per image",
+      "generation_time": "5-8 seconds",
+      "status": "active_via_bifrost"
+    },
+    "fal/fal-ai/flux-pro": {
+      "provider": "fal-ai",
+      "model_type": "image_generation",
+      "routing": "bifrost",
+      "strengths": ["exceptional quality", "best prompt adherence", "fast inference"],
+      "use_cases": ["hero images", "marketing campaigns", "critical assets"],
+      "output_formats": ["png", "jpg", "webp"],
+      "cost": "$0.05 per image",
+      "generation_time": "10-15 seconds",
+      "status": "active_via_bifrost"
+    },
+    "google/imagen-3": {
+      "provider": "google-cloud",
+      "model_type": "image_generation",
+      "common_name": "nano banana",
+      "strengths": ["excellent prompt following", "complex compositions", "high quality"],
+      "use_cases": ["detailed scenes", "complex prompts", "Google ecosystem"],
+      "output_formats": ["png", "jpg"],
+      "cost": "$0.02-0.04 per image",
+      "generation_time": "5-10 seconds",
+      "status": "requires_google_cloud_setup"
+    }
+  },
+  "notes": {
+    "usage": "This file is owned by the AI Nerd (🤓) and defines model assignments for all specialist agents",
+    "legacy_mode": "When running in Legacy mode (direct Anthropic API), agents use the 'model:' field from their agent definition files",
+    "infinity_mode": "When running in Infinity mode (ANTHROPIC_BASE_URL set), agents can use models defined in this file",
+    "routing_flow": "Claude Code CLI → Claude Code Router (port 3456) → Bifrost Gateway (port 8083) → Provider APIs",
+    "fallback_strategy": "If infinity_model is unavailable, use fallback. If fallback fails, use legacy model field",
+    "groq_status": "Groq provider configured in Bifrost but API key access needs to be fixed before activation",
+    "future_providers": "Consider adding: Fireworks AI (competitive pricing), Together AI (research models), Anthropic direct (comparison/fallback)"
+  }
+}

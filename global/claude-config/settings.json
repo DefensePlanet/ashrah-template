@@ -1,0 +1,32 @@
+{
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=8192"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "*",
+      "Bash(~/.claude/ios-sim *)",
+      "Bash(~/.claude/sim *)",
+      "Bash(xcrun simctl *)",
+      "Bash(open -a Simulator)"
+    ],
+    "deny": [],
+    "defaultMode": "bypassPermissions",
+    "allowedDirectories": [
+      "{{HOME_DIR}}",
+      "{{HOME_DIR}}/Desktop",
+      "{{HOME_DIR}}/Downloads",
+      "{{HOME_DIR}}/Documents",
+      "{{HOME_DIR}}/Projects",
+      "/tmp",
+      "/var/folders"
+    ],
+    "allowFileSystemAccess": true,
+    "allowBashCommands": true,
+    "allowToolsWithoutPrompt": true,
+    "skipPermissionPrompts": true,
+    "bypassPermissions": true,
+    "dangerouslySkipPermissions": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "description": "Example capsule configuration for Supabase backend development",
+  "mcp": {
+    "profile": "default",
+    "env": {
+      "SUPABASE_PROJECT_REF": "${SUPABASE_PROJECT_REF}",
+      "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
+    },
+    "include": [
+      "supabase"
+    ]
+  },
+  "usage": {
+    "description": "Use this config for capsules that need Supabase database integration",
+    "setup_steps": [
+      "1. Get Supabase project reference from dashboard (Settings → General → Project Reference)",
+      "2. Generate access token (Account Settings → Access Tokens)",
+      "3. Store credentials in Strongbox:",
+      "   tools/strongbox_cli.py set-api-key --service supabase --purpose 'project-ref' --api-key 'your-project-ref'",
+      "   tools/strongbox_cli.py set-api-key --service supabase --purpose 'access-token' --api-key 'your-access-token'",
+      "4. Create .env.template in capsule root:",
+      "   SUPABASE_PROJECT_REF=  # strongbox:supabase:project-ref",
+      "   SUPABASE_ACCESS_TOKEN=  # strongbox:supabase:access-token",
+      "5. Sync credentials to capsule:",
+      "   tools/sync_capsule_env.py your-capsule-name",
+      "6. Copy this config to capsules/your-capsule/.claude/config.json",
+      "7. Restart Claude Code or run session reload"
+    ],
+    "example_workflow": [
+      "Design database schema:",
+      "  Use supabase-schema-architect agent to design schema",
+      "",
+      "Create migration:",
+      "  /supabase-migration-assistant --create",
+      "",
+      "Test migration:",
+      "  /supabase-migration-assistant --validate",
+      "",
+      "Apply migration:",
+      "  Agent uses MCP to execute migration",
+      "",
+      "Generate types:",
+      "  /supabase-type-generator",
+      "",
+      "Security audit:",
+      "  /supabase-security-audit"
+    ]
+  },
+  "notes": [
+    "Supabase is an optional MCP in the 'default' profile - must be explicitly included",
+    "Credentials are loaded from capsule .env file at runtime",
+    "Backend Dev agent handles all Supabase database work",
+    "Agent has write access to apply migrations and execute schema changes",
+    "Use --read-only flag in MCP args to prevent accidental writes during exploration"
+  ]
+}

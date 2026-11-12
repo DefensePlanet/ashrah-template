@@ -1,0 +1,13 @@
+{
+  "bots": [
+    {
+      "username": "@YourBotUsername",
+      "botId": 0,
+      "type": "tc3",
+      "displayName": "YourBot"
+    }
+  ],
+  "maxTtl": 3,
+  "dedupWindowMs": 300000,
+  "enabledGroups": []
+}

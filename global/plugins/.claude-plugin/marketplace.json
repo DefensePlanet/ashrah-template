@@ -1,0 +1,7 @@
+{
+  "name": "BuilderOS Plugin Marketplace",
+  "description": "Official BuilderOS plugin marketplace for forked, customized, and original plugins maintained by {{USER_NAME}}'s Builder System",
+  "version": "1.0.0",
+  "author": "{{USER_NAME}} (Builder System)",
+  "plugins": []
+}

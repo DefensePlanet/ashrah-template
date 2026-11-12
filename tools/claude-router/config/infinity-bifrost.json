@@ -1,0 +1,146 @@
+{
+  "BuilderOSManaged": true,
+  "LOG": true,
+  "LOG_LEVEL": "debug",
+  "API_TIMEOUT_MS": 600000,
+  "transformers": [
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/openai-responses-fixed.js"
+    },
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/agent-name-resolver.js"
+    },
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/agent-model-router.js"
+    },
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/bifrost-chat-endpoint.js"
+    },
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/noop-transformer.js"
+    },
+    {
+      "path": "{{HOME_DIR}}/.claude-code-router/plugins/minimax-reasoning-exclude.js"
+    }
+  ],
+  "Providers": [
+    {
+      "name": "bifrost-chat",
+      "api_base_url": "http://127.0.0.1:8083/v1/chat/completions",
+      "api_key": "$OPENAI_API_KEY",
+      "models": [
+        "openai/gpt-4o-mini",
+        "openai/gpt-4o",
+        "openai/gpt-4-turbo",
+        "openai/gpt-4"
+      ],
+      "transformer": {
+        "use": [
+          "agent-name-resolver",
+          "agent-model-router",
+          "bifrost-chat-endpoint"
+        ]
+      }
+    },
+    {
+      "name": "bifrost-minimax",
+      "api_base_url": "http://127.0.0.1:8083/v1/chat/completions",
+      "api_key": "$OPENROUTER_API_KEY",
+      "models": [
+        "openrouter/minimax/minimax-m2"
+      ],
+      "transformer": {
+        "use": ["bifrost-chat-endpoint", "minimax-reasoning-exclude"]
+      }
+    },
+    {
+      "name": "bifrost-openrouter-image",
+      "api_base_url": "http://127.0.0.1:8083/v1/chat/completions",
+      "api_key": "$OPENROUTER_API_KEY",
+      "models": [
+        "openrouter/google/gemini-3-pro-image-preview",
+        "openrouter/google/gemini-2.5-flash-image-preview"
+      ],
+      "transformer": {
+        "use": ["bifrost-chat-endpoint"]
+      }
+    },
+    {
+      "name": "bifrost-kimi",
+      "api_base_url": "http://127.0.0.1:8083/v1/chat/completions",
+      "api_key": "$OPENROUTER_API_KEY",
+      "models": [
+        "openrouter/moonshotai/kimi-k2-thinking"
+      ],
+      "transformer": {
+        "use": [
+          "agent-name-resolver",
+          "agent-model-router",
+          "bifrost-chat-endpoint"
+        ]
+      }
+    },
+    {
+      "name": "bifrost-responses",
+      "api_base_url": "http://127.0.0.1:8083/v1/responses",
+      "api_key": "$OPENAI_API_KEY",
+      "models": [
+        "openai/gpt-5.1-codex",
+        "openai/gpt-5-codex"
+      ],
+      "transformer": {
+        "use": [
+          "agent-name-resolver",
+          "agent-model-router",
+          "openai-responses-fixed"
+        ]
+      }
+    },
+    {
+      "name": "openclaw-chat",
+      "api_base_url": "$OPENCLAW_CHAT_COMPLETIONS_BASE_URL",
+      "api_key": "$OPENCLAW_GATEWAY_TOKEN",
+      "models": [
+        "openai-codex/gpt-5.3-codex",
+        "openai-codex/gpt-5.2-codex",
+        "openai-codex/gpt-5.1-codex"
+      ],
+      "transformer": {
+        "use": [
+          "agent-name-resolver",
+          "agent-model-router",
+          "bifrost-chat-endpoint"
+        ]
+      }
+    },
+    {
+      "name": "anthropic",
+      "api_base_url": "https://api.anthropic.com",
+      "api_key": "$ANTHROPIC_API_KEY",
+      "models": [
+        "claude-sonnet-4-5-20250929",
+        "claude-3-7-sonnet-20250219",
+        "claude-3-5-sonnet-20241022",
+        "claude-3-5-sonnet-20240620",
+        "claude-opus-4-20250514",
+        "claude-3-opus-20240229",
+        "claude-3-5-haiku-20241022",
+        "claude-3-haiku-20240307",
+        "claude-haiku-4-5-20251001"
+      ],
+      "transformer": {
+        "use": []
+      }
+    }
+  ],
+  "Router": {
+    "default": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "think": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "longContext": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "longContextThreshold": 160000,
+    "background": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "webSearch": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "media": "openclaw-chat,openai-codex/gpt-5.3-codex",
+    "infinity": "openclaw-chat,openai-codex/gpt-5.3-codex"
+  }
+}
